@@ -12,8 +12,9 @@ description: > # this means to ignore newlines until "baseurl:"
   Begoña Valero, escritora.
 baseurl: "" # the subpath of your site, e.g. /blog
 port: 80
-url: "http://192.168.1.21:80" # the base hostname & protocol for your site
+#url: "http://192.168.1.21:80" # the base hostname & protocol for your site
 #url: "begonavalero.com" # the base hostname & protocol for your site
+url: "begonavaleroescritora.github.io" # the base hostname & protocol for your site
 
 # Build settings
 markdown: kramdown
