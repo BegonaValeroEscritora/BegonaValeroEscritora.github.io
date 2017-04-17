@@ -14,12 +14,12 @@
 	{% if page.description %}	  <meta content="{{ page.description }}" property="og:description">
 	{% else %}	  <meta content="{{ site.description }}" property="og:description">
 	{% endif %}
-	{% if page.url %}	  <meta content="{{ site.url }}{{ page.url }}" property="og:url">
+	{% if page.url %}	  <meta content="{{ site.url }}/{{ page.url }}" property="og:url">
 	{% endif %}
 	{% if page.date %}	  <meta content="{{ page.date | date_to_xmlschema }}" property="article:published_time">
 	  <meta content="{{ site.url }}/about/" property="article:author">
 	{% endif %}
-	{% if page.image %}	  <meta content="{{ site.url }}images/{{ page.image }}" property="og:image">
+	{% if page.image %}	  <meta content="{{ site.url }}/images/{{ page.image }}" property="og:image">
 	{% else %}
 	  <meta content="{{ site.url }}iamges/BegonaValero.jpg" property="og:image">
 	{% endif %}
