@@ -19,26 +19,6 @@
 	  ga('send', 'pageview');
 
 	</script>
-	{% if page.permalink contains 'contacto' %}
-	<script src='https://www.google.com/recaptcha/api.js'></script>
-		  <script>
-			function validateForm(){
-			  submitHandler: {
-				var response = grecaptcha.getResponse();
-				//recaptcha failed validation
-				if (response.length == 0) {
-				  alert('Debe completar la comprobación antiSPAM');
-				  return false;
-				}
-				  //recaptcha passed validation
-				else {
-				  $('.form-horizontal').attr('action', 'https://formspree.io/'+'b=gon%v%l=ro=scritor%*gm%il+com'.replace(/\%/g,'a').replace(/\=/g,'e').replace(/\*/g,'@').replace(/\+/g,'.'))
-				  return true;
-				}
-			  }
-			}
-		  </script>
-	{% endif %}
 	<!--Fix jekyll derps-->
 	<script> 
 		$( ".remove-jekyll-js" ).each(function() {
