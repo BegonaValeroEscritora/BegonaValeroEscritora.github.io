@@ -1,0 +1,72 @@
+---
+layout: page-fullscreen
+title: Agenda
+---
+{% assign curr_date= {{site.time | date: '%s'}}%} <!--El espaciado en {site.time es CLAVE -->
+<div class="container">
+	<div class="row">
+		<div  class="col-md-6 col-sm-12 cont">
+		 <h2>Eventos pasados</h2>			
+			<table>
+				<tbody>
+					{% assign something="false" %}<!--Check if there is something to print at all-->
+					{% for event in site.agenda %}
+						{% assign event_date= {{event.date | date: '%s'}}%}
+						{% if event_date < curr_date %}
+							{% assign something="true" %}
+							<tr>
+							<td class="vertical-align-top"><div class="date">
+								<span class="binds"></span>
+								<span class="month">{% include mes.html mes= event_date %}</span>
+								<h1 class="day">{{ event_date | date: "%-d" }}</span><span class="year">{{ event_date | date: "%-Y" }}</span></h1>
+							</div></td>
+							
+							<td class="agenda-info">
+								<h4><a href="{{event.url}}"> {{event.title}}</a></h4>
+								<p class="no-justify no-padding-bottom no-margin-bottom">{{ event.content }}</p>
+								<p></p>
+								<a class="btn btn-default btn-sm" href="{{ event.url }}#comentarios" role="button"><span class="glyphicon glyphicon-comment"></span>&nbsp&nbspComentar o compartir</a>
+							</td>
+							</tr>
+						{% endif %}
+					{% endfor %}
+					{% if something=="false" %} 
+						<p>Parece que todavía no hay nada que mostrar</p><div class="separator"></div><br><div class="separator"></div>
+					{% endif %}
+				</tbody>
+			</table>
+		</div>
+		<div  class="col-md-6 col-sm-12">
+			<h2>Próximos eventos</h2>
+				<table>
+				<tbody>
+					{% assign something="false" %}<!--Check if there is something to print at all-->
+					{% for event in site.agenda %}
+						{% assign event_date= {{event.date | date: '%s'}}%}
+						{% if event_date > curr_date %}
+							{% assign something="true" %}
+							<tr>
+							<td class="vertical-align-top"><div class="date">
+								<span class="binds"></span>
+								<span class="month">{% include mes.html mes= event_date %}</span>
+								<h1 class="day">{{ event_date | date: "%-d" }}</span><span class="year">{{ event_date | date: "%-Y" }}</span></h1>
+							</div></td>
+							
+							<td class="agenda-info">
+								<h4><a href="{{event.url}}"> {{event.title}}</a></h4>
+								<p class="no-justify no-padding-bottom no-margin-bottom">{{ event.content }}</p>
+								<p></p>
+								<a class="btn btn-default btn-sm" href="{{ event.url }}#comentarios" role="button"><span class="glyphicon glyphicon-comment"></span>&nbsp&nbspComentar o compartir</a>
+							</td>
+							</tr>
+						{% endif %}
+					{% endfor %}
+					{% if something=="false" %} 
+						<p>Parece que todavía no hay nada que mostrar</p><div class="separator"></div><br><div class="separator"></div>
+					{% endif %}
+				</tbody>
+			</table>
+		</div>
+		</div>
+	</div>
+</div>

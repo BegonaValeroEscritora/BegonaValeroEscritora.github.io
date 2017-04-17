@@ -1,0 +1,36 @@
+<!--USO:
+	-destacado: 'título de post' (frot-matter) aparecerá como post destacado y no se mostrará entre los demás cuando se listen todos
+	
+	-<!--end--rt es el  excerpt_separator que indicará, en los posts largos que el post se corta en la página de previsualización en ese punto. En caso de no existir, se muestra el post completo
+	
+	includes: filter1, filter2
+-->
+<div class="post-list">
+    {% assign something="false" %}<!--Check if there is something to print at all-->
+    {% for post in site.posts %} <!--There is no support for parenthesis. Therefore this is needed-->
+		{% if post.categories contains {{include.filter1}} or {{include.filter1}} contains "blank" %} 
+		{% if post.categories contains {{include.filter2}} or {{include.filter2}} contains "blank" %}
+		{% if post.title != {{page.destacado}} %}
+			{% assign date= {{post.date }}%}
+			{% assign something="true" %}
+			<div class="post-item">
+				<h2 class="post-header-normal">
+					<a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a><br>
+					<span class="post-date pull-left"><span class="glyphicon glyphicon-menu-right" style="font-size: 9px; color: #777;"></span>&nbsp{{ date | date: "%-d" }} de {% include mes.html mes= date %} del {{ date | date: "%-Y" }}</span>
+					<span class="post-cat pull-left"><span class="glyphicon glyphicon-menu-right" style="font-size: 9px; color: #777;"></span>&nbsp{% for category in {{post.categories}} %}{{category}}&nbsp&nbsp{%endfor%}</span>
+				</h2>
+				{{ post.excerpt | replace:'h2','h3'}}
+				{% if post.content contains site.excerpt_separator %}
+					<br><a class="btn btn-default btn-md" href="{{ post.url | prepend: site.baseurl }}" role="button"><span class="glyphicon glyphicon-triangle-right"></span>&nbsp&nbspSeguir leyendo...</a>
+					<a class="btn btn-default btn-md" href="{{ post.url | prepend: site.baseurl }}#comentarios" role="button"><span class="glyphicon glyphicon-comment"></span>&nbsp&nbspComentar o compartir</a>
+				{% else %}
+					<br><a class="btn btn-default btn-md" href="{{ post.url | prepend: site.baseurl }}#comentarios" role="button"><span class="glyphicon glyphicon-comment"></span>&nbsp&nbspComentar o compartir</a>
+				{% endif %}
+				 <div class="separator"></div>
+			</div>
+		 {% endif %}{% endif %}{% endif %}
+    {% endfor %}
+	{% if something=="false" %} 
+		<p>Parece que todavía no hay nada que mostrar</p><div class="separator"></div><br><div class="separator"></div>
+	{% endif %}
+ </div>

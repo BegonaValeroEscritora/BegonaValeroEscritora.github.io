@@ -1,0 +1,42 @@
+<!--Category pagination implementation-->
+<!--n = number of posts-->
+<!--posts = array of all considered posts-->
+	{% assign n=0 %}
+	{% for post in site.posts %}
+			{% if (post.categories contains {{include.filter1}} or {{include.filter1}} contains 'blank') and (post.categories contains {{include.filter2}} or {{include.filter2}} contains 'blank') and post.title != {{page.destacado}} %}
+				{% assign posts[{{n}}]=post %} 
+				{% assign n={{n | plus:'1'}} %}
+		 {% endif %}
+	{% endfor %}
+<!--start = post index where we must start iterating-->
+	{% assign start={{page.number | minus:'1' | times: {{site.posts_per_page}} }} %}
+<!--end = post index where we must end-->
+	{% if {{n | minus: {{start}} }} <= {{site.posts_per_page}} %}
+		<!--We are in the last page-->
+		{% assign end={{n | minus: {{start}} }} %}
+	{% else %}
+		<!--We are NOT in the last page-->
+		{% assign end={{site.posts_per_page}} %}
+	{% endif %}
+{{n}} posts, {{start}} to {{end}}
+<!--Iterate through posts array-->
+	<div class="post-list">
+    {% for i in ({{start}}...{{start | plus:{{end}} }} ) %}
+		{% assign post={{posts[{{i}}] }} %}
+		<div class="post-item">
+			<h2 class="post-header-normal">
+				<a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a><br>
+				<span class="post-date pull-left"><span class="glyphicon glyphicon-menu-right" style="font-size: 9px; color: #777;"></span>&nbsp{{ post.date | date: "%-d / %-m / %Y" }}&nbsp&nbsp</span>
+				<span class="post-cat pull-left"><span class="glyphicon glyphicon-menu-right" style="font-size: 9px; color: #777;"></span>&nbsp{% for category in {{post.categories}} %}{{category}}&nbsp&nbsp{%endfor%}</span>
+			</h2>
+			{{ post.excerpt | replace:'h2','h3'}}
+			{% if post.content contains site.excerpt_separator %}
+				<br><a class="btn btn-default btn-md" href="{{ post.url | prepend: site.baseurl }}" role="button"><span class="glyphicon glyphicon-triangle-right"></span>&nbsp&nbspSeguir leyendo...</a>
+				<a class="btn btn-default btn-md" href="{{ post.url | prepend: site.baseurl }}#comentarios" role="button"><span class="glyphicon glyphicon-comment"></span>&nbsp&nbspComentar o compartir</a>
+			{% else %}
+				<br><a class="btn btn-default btn-md" href="{{ post.url | prepend: site.baseurl }}#comentarios" role="button"><span class="glyphicon glyphicon-comment"></span>&nbsp&nbspComentar o compartir</a>
+			{% endif %}
+			 <div class="separator"></div>
+		</div>
+    {% endfor %}
+ </div>

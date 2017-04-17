@@ -1,0 +1,19 @@
+<div id="noticias">
+	<h2>Últimas publicaciones</h2>
+	{% for post in site.posts limit:3 %}
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h4><a class="post-link" href="{{ post.url | prepend: site.baseurl }}"><h4>{{ post.title }}</a><br>
+				<small class="post-date date-right-panel pull-right">{{ post.date | date: "%-d / %-m / %Y" }}</small>
+			</div>
+			<div class="panel-body remove-jekyll-js">
+				{{  post.content 
+					| replace:'<h2>','--t--' | replace:'</h2>','-/t--'
+					| strip_html
+					| replace:'--t--','<h4>' | replace:'-/t--','</h4>'  
+					| truncatewords:43 }}
+			</div>
+		</div>
+	{% endfor %}
+	<a class="btn btn-default btn-md pull-right" href="{{site.url}}/publicaciones" role="button">Ver todas</a>
+</div>

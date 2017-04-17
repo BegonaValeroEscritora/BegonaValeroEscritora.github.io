@@ -1,0 +1,24 @@
+<!--simple image gallery using lightbox-->
+<!--Inside post folder?-->
+{% if {{include.nopost}} contains 'true' or {{include.nopost}} contains 'yes' %}
+	{% assign postfolder="" %}
+{% else %}
+	{% assign postfolder="posts/" %}
+{% endif %}
+<!--generate-->
+<div class="gallery">
+	{% assign images={{include.images | split:','}} %}
+	{% for image in images %}
+			<!--Check for subfolders-->
+			{% assign source_real={{image}} %}
+			{% if {{image}} contains '/' %}
+				{% assign source_temp={{image | split:'/'}} %}
+				{% capture source_thumb %}
+					{{source_temp[0] | strip}}/thumbs/{{source_temp[1] | strip}} 
+				{%endcapture%}
+			{%else %}
+				{% capture source_thumb %}thumbs/{{image | strip}}{%endcapture%}
+			{% endif %}
+				<a class="no-border" href="{{ site.baseurl }}/images/{{postfolder | trim}}{{source_real | strip}}" data-lightbox="{{images[0]}}" data-title=""><img class="img img-gallery limit-height limit-width" src="{{ site.baseurl }}/images/{{postfolder | trim}}{{source_thumb | strip}}"/></a>
+	{% endfor %}
+</div>

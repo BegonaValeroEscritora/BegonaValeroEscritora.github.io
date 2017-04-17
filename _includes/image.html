@@ -1,0 +1,31 @@
+<!--Check for subfolders-->
+{% assign source_real={{include.source}} %}
+{% if {{include.source}} contains '/' %}
+	{% assign source_temp={{include.source | split:'/'}} %}
+	{% capture source_thumb %}{{source_temp[0]}}/thumbs/{{source_temp[1]}} {%endcapture%}
+{%else %}
+	{% capture source_thumb %}thumbs/{{include.source}}{%endcapture%}
+{% endif %}
+<!--Inside post folder?-->
+{% if {{include.nopost}} contains 'true' or {{include.nopost}} contains 'yes' %}
+	{% assign postfolder="" %}
+{% else %}
+	{% assign postfolder="posts/" %}
+{% endif %}
+<!--Nice picture :)-->
+	<a href="{{ site.url }}/images/{{postfolder | trim}}{{source_real}}">
+		<img src="{{ site.url }}/images/{{postfolder | trim}}{{source_thumb}}"  
+			 class=" img
+				{% if {{include.small}} contains 'yes' %}
+					limit-height
+				{% endif %}
+				{% if {{include.position}} contains 'center' %}
+					img-responsive center-block
+				{% elsif {{include.position}} contains 'left' %}
+					img-post pull-left
+				{% else %}
+					img-post pull-right
+				{% endif %}
+					">
+		</img>
+	</a>

@@ -1,0 +1,19 @@
+//Open command promot in this folder
+//For some reason, cd D:\SITE\ doesn't work
+//Set encoding in console to UTF-8
+	chcp 65001
+//or 
+	enc
+//New site
+	jekyll new site-name
+//Build site
+	jekyll build --source D:\SITE\site-name
+//Serve in http://localhost:4000/
+	cd site-name
+	jekyll serve
+
+//Jekyll will process all files it needs to process ( .markdown, .scss, etc.)
+//Underscores only signal those files which won't need to appear in the 
+//final page since they are only partials
+
+//If it throws a character encoding error, change encoding of file from ansi t UTF-8 without BOM

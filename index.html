@@ -1,0 +1,53 @@
+---
+layout: minimal
+destacado: Sin destacado
+---
+<header class="jumbotron">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-4 col-sm-12 add-padding-left">
+				<img src="images/thumbs/BegonaValero.jpg" class="img-autora img-circle" alt="Begoña Valero"></img>
+			</div>
+			<div class="col-md-8 col-sm-12 add-padding-right">
+				<h1>Begoña Valero</h1>
+				<div class="subh1">Escritora</div>
+				<p class="no-padding-bottom no-margin-bottom ">Muchas gracias por visitar mi web. Espero que <i>La casa del Compás de Oro</i>, mi segunda novela, te produzca tanto placer leerla como a mí escribirla. Si lo deseas puedes comentarme tus impresiones, me encantará conocerlas.<br>Recibe un fuerte abrazo,<br><span>Begoña Valero</span></p>
+				<a class="btn btn-default btn-rounded btn-lg pull-right text-right" href="{{ site.url }}/autora" role="button">Más acerca de mí</a>
+			</div>
+		</div>
+	</div>
+</header>
+<div class="container">
+	<div class="row">
+		<div id="center" class="col-md-8 col-sm-12 cont">
+			<div id="libros">
+				<h2><a href="{{site.url}}/lacasadelcompasdeoro/novela">La casa del compás de oro (Grijalbo)</a></h2>
+				<div class="alert alert-warning" role="alert">Disponible a partir del 08 de junio de 2017</div>
+				<a class="no-border" href="{{site.url}}/lacasadelcompasdeoro/novela"><img src="{{site.url}}/images/thumbs/casa_compas_portada.jpg" alt="La casa del compás de oro" class="img pull-right img-post"></a>
+				<p><b>En la convulsa Europa del siglo XVI, asolada por las guerras de religión, el amor por los libros podía llevar a la gloria o a la hoguera.</b></p>
+				<p><b>La historia de un aprendiz que se convirtió en el impresor, librero y editor más prestigioso de su tiempo.</b></p>
+				<p>En la década de 1530, la villa de Lyon se ha convertido en uno de los centros más importantes de una pro-fesión en auge: la de impresor. Por sus calles pasean Christophe y su mejor amigo Pierre, buscando erratas en las pruebas de los libros que los pequeños talleres de impresión exponen en sus ventanas. Si detectan una, les recompensarán con una moneda.</p><p> Pero esos libros también pueden hacer que alguien acabe en la hoguera, como pronto descubrirá Christophe. Desde entonces, su empeño por cumplir el sueño de expandir el conocimiento y alcanzar la perfección en un oficio se convertirá en la aventura más emocionante y peligrosa.</p>
+				<div class="clear"></div>
+				<a href="{{ site.url }}/lacasadelcompasdeoro/novela" class="btn btn-default btn-md"><span class="glyphicon glyphicon glyphicon-bookmark"></span> Saber más</a>
+			<div class="margin-bottom"></div>
+			</div>
+			<div id="librosTodos">
+			<h2>Todos los libros</h2>
+			<p>Libros publicados por Begoña Valero:</p>
+				<div id="questions">
+					<p class="question">
+						<a class="no-border" href="{{site.url}}/lacasadelcompasdeoro/novela"><img src="{{site.url}}/images/thumbs/casa_compas_portada.jpg" alt="La casa del compás de oro" class="img img-responsive center-block"></a>
+						La casa del compás de oro<br>(2017, Grijalbo)
+					</p>
+					<p class="question">
+						<a class="no-border" href="{{site.url}}/eltrabajodeloslibros/novela"><img src="{{site.url}}/images/thumbs/book1.jpg" alt="El trabajo de los libros" class="img img-responsive center-block"></a>
+						El trabajo de los libros<br>(2012, Denes)
+					</p>
+				</div>
+			</div>
+		</div>
+		<div id="right-bar" class="col-md-4 col-sm-12">
+				{% include agenda.html %}
+		</div>
+	</div>
+</div>

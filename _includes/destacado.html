@@ -1,0 +1,30 @@
+<!--USO:
+	-destacado: 'título de post' (frot-matter) aparecerá como post destacado y no se mostrará entre los demás cuando se listen todos
+	
+	-<!--end--rt es el  excerpt_separator que indicará, en los posts largos que el post se corta en la página de previsualización en ese punto. En caso de no existir, se muestra el post completo
+	
+	includes: filter1, filter2
+-->
+{% for post in site.posts %}
+	{% if post.title == {{page.destacado}} %}
+		<div class="panel panel-default">
+		  <div class="panel-heading">
+			<h2>
+				<a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a><br>
+				<span class="post-date pull-left"><span class="glyphicon glyphicon-menu-right" style="font-size: 9px; color: #777;"></span>&nbsp{{ post.date | date: "%-d / %-m / %Y" }}&nbsp&nbsp</span>
+				<span class="post-cat pull-left"><span class="glyphicon glyphicon-menu-right" style="font-size: 9px; color: #777;"></span>&nbsp{% for category in {{post.categories}} %}{{category}}&nbsp&nbsp{%endfor%}</span>
+			</h2>
+		  </div>
+		  <div class="panel-body">
+			 {{ post.excerpt | replace:'h2','h3'}}
+		  </div>
+		  {% if post.content contains site.excerpt_separator %}
+				<br><a class="btn btn-default btn-md" href="{{ post.url | prepend: site.baseurl }}" role="button"><span class="glyphicon glyphicon-triangle-right"></span>&nbsp&nbspSeguir leyendo...</a>
+				<a class="btn btn-default btn-md" href="{{ post.url | prepend: site.baseurl }}#comentarios" role="button"><span class="glyphicon glyphicon-comment"></span>&nbsp&nbspComentar o compartir</a>
+			{% else %}
+				<br><a class="btn btn-default btn-md" href="{{ post.url | prepend: site.baseurl }}#comentarios" role="button"><span class="glyphicon glyphicon-comment"></span>&nbsp&nbspComentar o compartir</a>
+			{% endif %}
+		</div>
+		<div class="separator"></div>
+	{% endif %}
+{% endfor %}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  {% include head.html %}		<!--Head tag-->
+  <body>
+    {% include header.html %}	<!--Navbar-->
+		{{ content }}
+    {% include footer.html %}	<!--Footer-->
+    <script src="{{site.baseurl}}/js/jquery.min.js"></script>
+    <script src="{{site.baseurl}}/js/bootstrap.min.js"></script>
+	<script src="{{site.baseurl}}/js/lightbox.js"></script>
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-97463650-1', 'auto');
+	  ga('send', 'pageview');
+
+	</script>
+	{% if page.permalink contains 'contacto' %}
+	<script src='https://www.google.com/recaptcha/api.js'></script>
+		  <script>
+			function validateForm(){
+			  submitHandler: {
+				var response = grecaptcha.getResponse();
+				//recaptcha failed validation
+				if (response.length == 0) {
+				  alert('Debe completar la comprobación antiSPAM');
+				  return false;
+				}
+				  //recaptcha passed validation
+				else {
+				  $('.form-horizontal').attr('action', 'https://formspree.io/'+'b=gon%v%l=ro=scritor%*gm%il+com'.replace(/\%/g,'a').replace(/\=/g,'e').replace(/\*/g,'@').replace(/\+/g,'.'))
+				  return true;
+				}
+			  }
+			}
+		  </script>
+	{% endif %}
+	<!--Fix jekyll derps-->
+	<script> 
+		$( ".remove-jekyll-js" ).each(function() {
+			var post= $( this ).html();
+			$( this ).html(post.replace(/\{\%.*?\%}/, "").replace(/\{\%.*?\.\.\./, "..."));
+		});
+		document.title= document.title.replace(/\<.*?\>/, "").replace(/\<.*?\>/, "");
+	</script>
+	
+	<!--Quick and dirty mayl obfuscation-->
+	<script>
+	function showMayl(mayl){
+		$('.show-mayl-'+mayl).remove();
+		var maylS= $('.mayl'+mayl);
+		maylS.html(maylS.html().replace(/\%/g,'a').replace(/\=/g,'e').replace(/\*/g,'@').replace(/\+/g,'.'));
+		maylS.removeClass('invisible');
+	}
+	</script>
+  </body>
+</html>
