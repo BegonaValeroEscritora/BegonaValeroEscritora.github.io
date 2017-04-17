@@ -28,9 +28,9 @@ posts_per_page: 8
 
 collections:
   agenda:
-    output: true
-    permalink: /:collection/:title
-	
+   output: true
+   permalink: /:collection/:title
+
 #To do
 #Fix disqus comments (maybe require upload to the web)
 #upload
