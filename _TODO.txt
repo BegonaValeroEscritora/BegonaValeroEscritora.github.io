@@ -7,3 +7,8 @@ Post-publicación
 	
 BUGS
 	Sometimes liquid shows --> Kinda fixed with js
+	
+	
+NOW
+	Fix web icon not showing
+	Fix formspree

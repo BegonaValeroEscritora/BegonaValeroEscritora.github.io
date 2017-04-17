@@ -47,15 +47,5 @@
 		});
 		document.title= document.title.replace(/\<.*?\>/, "").replace(/\<.*?\>/, "");
 	</script>
-	
-	<!--Quick and dirty mayl obfuscation-->
-	<script>
-	function showMayl(mayl){
-		$('.show-mayl-'+mayl).remove();
-		var maylS= $('.mayl'+mayl);
-		maylS.html(maylS.html().replace(/\%/g,'a').replace(/\=/g,'e').replace(/\*/g,'@').replace(/\+/g,'.'));
-		maylS.removeClass('invisible');
-	}
-	</script>
   </body>
 </html>

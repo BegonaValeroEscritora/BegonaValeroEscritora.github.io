@@ -31,7 +31,3 @@ collections:
    output: true
    permalink: /:collection/:title
 
-#To do
-#Fix disqus comments (maybe require upload to the web)
-#upload
-#<li><span class="glyphicon glyphicon-envelope"></span>{% include mail.html mayl="b=gon%v%l=ro=scritor%*gm%il+com" id="0"%}</li>
