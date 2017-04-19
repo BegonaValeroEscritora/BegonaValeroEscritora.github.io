@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:fb="http://ogp.me/ns/fb#">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml">
   {% include head.html %}		<!--Head tag-->
   <body>
   <div class="header-img"><img style="display: none; height:0px; width: 0px;" src="{{site.url}}/images/banner-books.jpg" alt=""></div>
@@ -19,14 +18,6 @@
 	  ga('create', 'UA-97463650-1', 'auto');
 	  ga('send', 'pageview');
 
-	</script>
-	<!--Fix jekyll derps-->
-	<script> 
-		$( ".remove-jekyll-js" ).each(function() {
-			var post= $( this ).html();
-			$( this ).html(post.replace(/\{\%.*?\%}/, "").replace(/\{\%.*?\.\.\./, "..."));
-		});
-		document.title= document.title.replace(/\<.*?\>/, "").replace(/\<.*?\>/, "");
 	</script>
   </body>
 </html>
