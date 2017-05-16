@@ -1,0 +1,2 @@
+mogrify  -format jpg -quality 90 -thumbnail 1920x1080 *.jpg
+mogrify  -format jpg -quality 90 -thumbnail 1920x1080 *.png
