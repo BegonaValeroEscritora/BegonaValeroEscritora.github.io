@@ -1,9 +1,14 @@
-TODO
-	Añadir pagination a la lista de todos los posts (y a otras listas tb)	
-	Iconos de share con numero de shares	Worth it???
-	
-Post-publicación
-	Realizar optimizaciones (elimiar reglas css sin usar, minimizar código) https://developers.google.com/speed/pagespeed/insights/
-	
-BUGS
-	Sometimes liquid shows --> Kinda fixed with js
+NEW TO DO LIST:
+	Google search console
+	Eliminar addtoany y usar método custom (que permita mostrar número de shares)
+
+OLD TO DO LIST:
+	TODO
+		Añadir pagination a la lista de todos los posts (y a otras listas tb)	
+		Iconos de share con numero de shares	Worth it???
+		
+	Post-publicación
+		Realizar optimizaciones (elimiar reglas css sin usar, minimizar código) https://developers.google.com/speed/pagespeed/insights/
+		
+	BUGS
+		Sometimes liquid shows --> Kinda fixed with js
