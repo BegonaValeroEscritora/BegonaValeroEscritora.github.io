@@ -223,7 +223,6 @@ nav {
 .post-date, .post-cat{
 	width:70px;
 	position: relative;
-	top: 10px;
 	display:inline-block;
 	padding-right: 4px;
 	margin: 0;
@@ -234,25 +233,41 @@ nav {
 	font-size: 13.5px;
 }
 .icon-book-image{
-	max-height: 70px;
+	position: relative;
+	top: -13px;
+	height: 70px;
 }
 .icon-book{
 	position: absolute;
+	border-right: 1px dashed black;
+    padding-right: 5px;
 	left: -115px;
-	margin-top: -10px;
 }
 @media (max-width: 1390px){
+	.post-date, .post-cat{
+		top: 29px;
+		left: 50px;
+		text-align: left;
+	}
 	.post-item h3{
 		margin-top: 8px;
 	}
 	.post-header-normal{
-		padding-bottom:0px !important;
-		margin-bottom: 9px !important;;
+		padding-bottom:0px;
+		margin-top: 3px !important;
+		margin-bottom: 3px !important;
 	}
 	.icon-book{
-		position: inherit !important;
-		float: left  !important;
+		border-bottom: 1px dashed black;
+		border-right: none;
+		width: 220px;
+		padding-bottom: 5px;
+		position: inherit;
 		padding-right: 10px !important;
+	}
+	.icon-book-image{
+		top: 0px;
+		left:-75px;
 	}
 }
 .post-item h3{

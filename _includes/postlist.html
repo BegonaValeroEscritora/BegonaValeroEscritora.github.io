@@ -15,15 +15,16 @@
 			{% assign something="true" %}
 				{% if post.categories contains "eltrabajodeloslibros" %}
 					<div class="icon-book">						
-						<span class="post-date">&nbsp{{ date | date: "%-d" }}<br>{% include mes.html mes= date %}<br>{{ date | date: "%-Y" }}</span>
-						<a href="{{ site.url }}/eltrabajodeloslibros/novela"> 
+						<span class="post-date">{{ date | date: "%-d" }}<br>{% include mes.html mes= date %}<br>{{ date | date: "%-Y" }}</span>
+						<a class="no-border" href="{{ site.url }}/eltrabajodeloslibros/novela"> 
 							<img class="icon-book-image"  src="{{ site.url }}/images/thumbs/book1.jpg">
 						</a>
 
 					</div>
 				{% else %}
 					<div class="icon-book">
-						<a href="{{ site.url }}/lacasadelcompasdeoro/novela"> 
+						<span class="post-date">{{ date | date: "%-d" }}<br>{% include mes.html mes= date %}<br>{{ date | date: "%-Y" }}</span>
+						<a class="no-border" href="{{ site.url }}/lacasadelcompasdeoro/novela"> 
 							<img class="icon-book-image" src="{{ site.url }}/images/thumbs/casa_compas_portada.jpg">
 						</a>
 					</div>
