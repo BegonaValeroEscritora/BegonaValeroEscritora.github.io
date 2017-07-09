@@ -12,7 +12,7 @@
 	{% if page.title %}	  <meta content="article" property="og:type">
 	{% else %}	  <meta content="website" property="og:type">
 	{% endif %}  
-	<meta content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}" property="og:description">
+	<meta content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 240 }}{% else %}{{ site.description }}{% endif %}" property="og:description">
 	{% if page.url != '/'%}	  <meta content="{{ site.url }}/{{ page.url }}" property="og:url">
 	{% else %} <meta content="{{ site.url }}" property="og:url">
 	{% endif %}
@@ -29,7 +29,7 @@
 
 		
 	<title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
-	<meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+	<meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 240 }}{% else %}{{ site.description }}{% endif %}">
 
 	<!--INCLUDES-->
 	<link href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAACwAAAAsAAAALAAAACwAAAAsAAAAOAAAAJgAAACIAAAAMAAAACwAAAAsAAAAL
