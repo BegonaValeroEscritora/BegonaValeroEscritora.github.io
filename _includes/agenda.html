@@ -8,10 +8,12 @@
 	
 	<table>
 		<tbody>
-	{% assign curr_date= {{site.time | date: '%s'}}%} <!--El espaciado en {site.time es CLAVE -->
+	{% assign curr_date= site.time | date: '%s' %} <!--El espaciado en {site.time es CLAVE -->
+	{% assign something="false" %}
 	{% for event in site.agenda %}
-		{% assign event_date= {{event.date | date: '%s'}}%}
+		{% assign event_date= event.date | date: '%s' %}
 		{% if event_date > curr_date %}
+			{% assign something="true" %}
 			<tr>
 			<td class="vertical-align-top"><div class="date">
 				<span class="binds"></span>
@@ -27,6 +29,9 @@
 			</tr>
 		{% endif %}
 	{% endfor %}
+	{% if something=="false" %} 
+			<p>No hay ningún evento próximamente</p>
+	{% endif %}
 		</tbody>
 	</table>
 	<a href="{{site.url}}/agenda" class="btn btn-default btn-sm pull-right" style="margin-top:20px">Ver toda la agenda</a>

@@ -7,24 +7,39 @@
 -->
 {% for post in site.posts %}
 	{% if post.title == {{page.destacado}} %}
-		<div class="panel panel-default">
-		  <div class="panel-heading">
-			<h2>
-				<a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a><br>
-				<span class="post-date pull-left"><span class="glyphicon glyphicon-menu-right" style="font-size: 9px; color: #777;"></span>&nbsp{{ post.date | date: "%-d / %-m / %Y" }}&nbsp&nbsp</span>
-				<span class="post-cat pull-left"><span class="glyphicon glyphicon-menu-right" style="font-size: 9px; color: #777;"></span>&nbsp{% for category in {{post.categories}} %}{{category}}&nbsp&nbsp{%endfor%}</span>
-			</h2>
-		  </div>
-		  <div class="panel-body">
-			 {{ post.excerpt | replace:'h2','h3'}}
-		  </div>
-		  {% if post.content contains site.excerpt_separator %}
-				<br><a class="btn btn-default btn-md" href="{{ post.url | prepend: site.baseurl }}" role="button"><span class="glyphicon glyphicon-triangle-right"></span>&nbsp&nbspSeguir leyendo...</a>
-				<a class="btn btn-default btn-md" href="{{ post.url | prepend: site.baseurl }}#comentarios" role="button"><span class="glyphicon glyphicon-comment"></span>&nbsp&nbspComentar o compartir</a>
+		<h2>Entrada destacada</h2>
+		{% assign date= {{post.date }}%}
+			{% if post.categories contains "eltrabajodeloslibros" %}
+				<div class="icon-book">						
+					<span class="post-date">{{ date | date: "%-d" }}<br>{% include mes.html mes= date %}<br>{{ date | date: "%-Y" }}</span>
+					<a class="no-border" href="{{ site.url }}/eltrabajodeloslibros/novela"> 
+						<img class="icon-book-image"  src="{{ site.url }}/images/thumbs/book1.jpg">
+					</a>
+
+				</div>
 			{% else %}
-				<br><a class="btn btn-default btn-md" href="{{ post.url | prepend: site.baseurl }}#comentarios" role="button"><span class="glyphicon glyphicon-comment"></span>&nbsp&nbspComentar o compartir</a>
+				<div class="icon-book">
+					<span class="post-date">{{ date | date: "%-d" }}<br>{% include mes.html mes= date %}<br>{{ date | date: "%-Y" }}</span>
+					<a class="no-border" href="{{ site.url }}/lacasadelcompasdeoro/novela"> 
+						<img class="icon-book-image" src="{{ site.url }}/images/thumbs/casa_compas_portada.jpg">
+					</a>
+				</div>
 			{% endif %}
+		<div class="post-item">
+			<h3 class="post-header-normal">
+				<a class="post-link" href="{{ post.url | prepend: site.url }}">{{ post.title }}</a><br>
+				<!--
+				<span class="post-cat pull-left"><span class="glyphicon glyphicon-menu-right" style="font-size: 9px; color: #777;"></span>&nbsp{% for category in {{post.categories}} %}{{category}}&nbsp&nbsp{%endfor%}</span>
+				-->
+			</h3>
+			{{ post.excerpt | replace:'h2','h3'}}
+			{% if post.content contains site.excerpt_separator %}
+				<br><a class="btn btn-default btn-md" href="{{ post.url | prepend: site.url }}" role="button"><span class="glyphicon glyphicon-triangle-right"></span>&nbsp&nbspSeguir leyendo...</a>
+				<a class="btn btn-default btn-md" href="{{ post.url | prepend: site.url }}#comentarios" role="button"><span class="glyphicon glyphicon-comment"></span>&nbsp&nbspComentar</a>
+			{% else %}
+				<br><a class="btn btn-default btn-md" href="{{ post.url | prepend: site.url }}#comentarios" role="button"><span class="glyphicon glyphicon-comment"></span>&nbsp&nbspComentar</a>
+			{% endif %}
+			 <div class="separator"></div>
 		</div>
-		<div class="separator"></div>
 	{% endif %}
 {% endfor %}

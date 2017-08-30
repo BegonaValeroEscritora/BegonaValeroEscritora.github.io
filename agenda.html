@@ -2,7 +2,7 @@
 layout: page-fullscreen
 title: Agenda
 ---
-{% assign curr_date= {{site.time | date: '%s'}}%} <!--El espaciado en {site.time es CLAVE -->
+{% assign curr_date= site.time | date: '%s' %} <!--El espaciado en {site.time es CLAVE -->
 <div class="container">
 	<div class="row">
 		<div  class="col-md-6 col-sm-12 cont">
@@ -11,7 +11,7 @@ title: Agenda
 				<tbody>
 					{% assign something="false" %}<!--Check if there is something to print at all-->
 					{% for event in site.agenda %}
-						{% assign event_date= {{event.date | date: '%s'}}%}
+						{% assign event_date= event.date | date: '%s'%}
 						{% if event_date < curr_date %}
 							{% assign something="true" %}
 							<tr>
@@ -42,7 +42,7 @@ title: Agenda
 				<tbody>
 					{% assign something="false" %}<!--Check if there is something to print at all-->
 					{% for event in site.agenda %}
-						{% assign event_date= {{event.date | date: '%s'}}%}
+						{% assign event_date= event.date | date: '%s'%}
 						{% if event_date > curr_date %}
 							{% assign something="true" %}
 							<tr>
