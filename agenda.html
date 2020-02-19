@@ -6,13 +6,13 @@ title: Agenda
 <div class="container">
 	<div class="row">
 		<div  class="col-md-6 col-sm-12 cont">
-		 <h2>Eventos pasados</h2>			
-			<table>
+			<h2>Próximos eventos</h2>
+				<table>
 				<tbody>
 					{% assign something="false" %}<!--Check if there is something to print at all-->
 					{% for event in site.agenda %}
 						{% assign event_date= event.date | date: '%s'%}
-						{% if event_date < curr_date %}
+						{% if event_date > curr_date %}
 							{% assign something="true" %}
 							<tr>
 							<td class="vertical-align-top"><div class="date">
@@ -37,13 +37,14 @@ title: Agenda
 			</table>
 		</div>
 		<div  class="col-md-6 col-sm-12">
-			<h2>Próximos eventos</h2>
-				<table>
+		 <h2>Eventos pasados</h2>			
+			<table>
 				<tbody>
 					{% assign something="false" %}<!--Check if there is something to print at all-->
-					{% for event in site.agenda %}
+					{% assign sorted = site.agenda | sort: 'date' | reverse %}
+					{% for event in sorted %}
 						{% assign event_date= event.date | date: '%s'%}
-						{% if event_date > curr_date %}
+						{% if event_date < curr_date %}
 							{% assign something="true" %}
 							<tr>
 							<td class="vertical-align-top"><div class="date">
