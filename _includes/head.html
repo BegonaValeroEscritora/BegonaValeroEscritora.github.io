@@ -19,7 +19,7 @@
 	{% if page.date %}	  <meta content="{{ page.date | date_to_xmlschema }}" property="article:published_time">
 	  <meta content="{{ site.url }}/autora" property="article:author">
 	{% endif %}
-	{% if page.image %}	  <meta content="{{ site.url }}/images/thumbs/{{ page.image }}" property="og:image" itemprop="image">
+	{% if page.image %}	  <meta content="{{ site.url }}/images/posts/{{ page.image }}" property="og:image" itemprop="image">
 	{% else %}
 	  <meta content="{{ site.url }}/images/BegonaValero.jpg" property="og:image" itemprop="image">
 	{% endif %}
