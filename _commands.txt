@@ -17,3 +17,7 @@
 //final page since they are only partials
 
 //If it throws a character encoding error, change encoding of file from ansi t UTF-8 without BOM
+
+<div>
+{% include destacado.html %}
+</div>

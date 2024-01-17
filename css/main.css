@@ -164,9 +164,10 @@ nav {
 	background-color: #f7f7f7;
 }
 .header{
-	background-image: url("{{site.url}}/images/banner-books.jpg");
+	background-image: url("{{site.url}}/images/testigo3d3.jpg");
 	background-size: cover;
 	background-color: #eee;
+	background-position: 70% 76%;
 }
 .jumbotron p{
 	font-size: 18px;

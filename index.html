@@ -8,12 +8,17 @@ destacado: Begoña Valero nombrada Senadora del Museo de la Imprenta y de las Ar
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-4 col-sm-12 add-padding-left">
-				<img src="images/thumbs/BegonaValero.jpg" class="img-autora img-circle" alt="Begoña Valero"></img>
+				<img src="images/thumbs/BegonaValero4b.jpg" class="img-autora img-circle" alt="Begoña Valero"></img>
 			</div>
 			<div class="col-md-8 col-sm-12 add-padding-right">
 				<h1>Begoña Valero</h1>
 				<div class="subh1">Escritora</div>
-				<p class="no-padding-bottom no-margin-bottom ">Muchas gracias por visitar mi web. Espero que <i>La casa del Compás de Oro</i>, mi nueva novela, te produzca tanto placer leerla como a mí escribirla. Si lo deseas puedes comentarme tus impresiones, me encantará conocerlas.<br>Recibe un fuerte abrazo,<br><span>Begoña Valero</span></p>
+				<p class="no-padding-bottom no-margin-bottom ">
+					Muchas gracias por visitar mi web. Espero que <i>Un testigo llamado Cervantes</i>, mi nueva novela, te sorprenda. <br>
+					Está basada en hechos reales, desconocidos en la literatura sobre la vida de Cervantes: <br>
+					Su declaración en un juicio de asesinato en Valencia, tras ser liberado de su cautiverio en Argel. <br>
+					Si lo deseas puedes comentarme tus impresiones, me encantará conocerlas.<br>
+					<span>Begoña Valero</span></p>
 				<a class="btn btn-default btn-rounded btn-lg pull-right text-right" href="{{ site.url }}/autora" role="button">Más acerca de mí</a>
 			</div>
 		</div>
@@ -21,12 +26,8 @@ destacado: Begoña Valero nombrada Senadora del Museo de la Imprenta y de las Ar
 </header>
 <div class="container">
 	<div class="row">
-		<div id="center" class="col-md-8 col-sm-12 cont">
-			<div>
-			{% include destacado.html %}
-			</div> 
-		
-			<div id="libros">
+		<div id="center" class="col-md-8 col-sm-12 cont">		
+			<!-- <div id="libros">
 				<h2><a href="{{site.url}}/lacasadelcompasdeoro/novela">La casa del Compás de Oro (Grijalbo)</a></h2>
 				<a class="no-border" href="{{site.url}}/lacasadelcompasdeoro/novela"><img src="{{site.url}}/images/thumbs/casa_compas_portada.jpg" alt="La casa del compás de oro" class="img pull-right img-post"></a>
 				<p>«Cualquiera que fuese hallado culpable de imprimir, reproducir o distribuir en cualquier forma libros o escritos considerados como heréticos, así como quien se hallase en posesión de ellos, a sabiendas, será reo de muerte. Si se retracta, en caso de ser hombre será decapitado y si es mujer, enterrada viva. Si no llegara a retractarse la muerte será en la hoguera.»</p>
@@ -39,12 +40,49 @@ destacado: Begoña Valero nombrada Senadora del Museo de la Imprenta y de las Ar
 				<div class="clear"></div>
 				<a href="{{ site.url }}/lacasadelcompasdeoro/novela" class="btn btn-default btn-md"><span class="glyphicon glyphicon glyphicon-bookmark"></span> Saber más</a>
 			<div class="margin-bottom"></div>
-			</div>			
+			</div>			 -->
+
+			<div id="libros">
+				<h2><a href="{{site.url}}/untestigollamadocervantes/novela">Un testigo llamado Cervantes</a></h2>
+				{% include image.html source="testigo3d2.jpg" small="no" position="right" nopost="true"%}
+				<!-- <a class="no-border" href="{{site.url}}/untestigollamadocervantes/novela"><img src="{{site.url}}/images/thumbs/testigo3d2.jpg" alt="Un testigo llamado Cervantes" class="img pull-right img-post" style="max-height:600px; max-width:500px;"></a> -->
+
+
+				<p>
+				Basada en hechos reales, Un testigo llamado Cervantes narra una insólita historia donde el
+				egoísmo, la envidia y los celos se conjugan ante una justicia que no atiende a razones. Solo la
+				verdadera amistad y el ingenio se aliarán para buscar una justa sentencia.
+				</p><p>
+				En 1580 desaparece en Valencia Jeroni, un joven pescador. Dado por muerto, la detención de
+				los presuntos culpables llevará a Pere de Pax, un mercader mallorquín, a averiguar la verdad
+				para intentar salvar a sus amigos de la horca.
+				Durante el proceso criminal, cuando existe riesgo inminente para la vida de los acusados, el
+				soldado del tercio Miguel de Cervantes llega a Valencia tras sufrir unos penosos años de
+				cautiverio en Argel. Por circunstancias del destino, su testimonio será crucial y desencadenará
+				una serie de extraordinarias apuestas que perturbarán la paz de la ciudad.
+				</p>
+				<div class="clear"></div>
+
+				<div style="color:rgb(144,64,83);">
+				<p class="text-center">&laquo;Crimen, traición y misterio en una apasionante novela que nos rescata a un
+					joven e intrépido Cervantes, soldado de los tercios y preso en Argel&raquo;</p>
+				<p class="text-center">ANTONIO PÉREZ HENARES, escritor, periodista y
+					presidente de la Asociación Escritores con la Historia.</p>
+				</div>
+
+				<div class="clear"></div>
+				<a href="{{ site.url }}/untestigollamadocervantes/novela" class="btn btn-default btn-md"><span class="glyphicon glyphicon glyphicon-bookmark"></span> Saber más</a>
+			<div class="margin-bottom"></div>
+			</div>	
 			
 			<div id="librosTodos">
 			<h2>Todos los libros</h2>
 			<p>Libros publicados por Begoña Valero:</p>
 				<div id="questions">
+					<p class="question">
+						<a class="no-border" href="{{site.url}}/untestigollamadocervantes/novela"><img src="{{site.url}}/images/thumbs/testigo.jpg" alt="Un testigo llamado Cervantes" class="img img-responsive center-block"></a>
+						<i>Un testigo llamado Cervantes</i><br>(2012, Sargantana)
+					</p>
 					<p class="question">
 						<a class="no-border" href="{{site.url}}/lacasadelcompasdeoro/novela"><img src="{{site.url}}/images/thumbs/casa_compas_portada.jpg" alt="La casa del Compás de Oro" class="img img-responsive center-block"></a>
 						<i>La casa del Compás de Oro</i><br>(2017, Grijalbo)
