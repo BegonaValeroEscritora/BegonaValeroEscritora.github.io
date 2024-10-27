@@ -1,6 +1,6 @@
 ---
 layout: minimal
-destacado: La XXV Semana de Novela Histórica de Cartagena entrega el Premio ODILO 2024 a Begoña Valero como mejor autora por su novela "Un testigo llamado Cervantes"
+destacado: 
 ---
 
 
@@ -26,10 +26,10 @@ destacado: La XXV Semana de Novela Histórica de Cartagena entrega el Premio ODI
 </header>
 <div class="container">
 	<div class="row">
-		<div id="center" class="col-md-8 col-sm-12 cont">
-			{% include image.html source="ODILO.png" small="no" position="center" nopost="true"%}		
+		<div id="center" class="col-md-8 col-sm-12 cont">		
 			<div>
-				{% include destacado.html %}
+				{% include postlist.html filter1="destacado" filter2="blank"%}
+				{% include image.html source="ODILO.png" small="no" position="center" nopost="true"%}
 			</div> 
 			<!-- <div id="libros">
 				<h2><a href="{{site.url}}/lacasadelcompasdeoro/novela">La casa del Compás de Oro (Grijalbo)</a></h2>
