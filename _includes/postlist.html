@@ -40,12 +40,21 @@
 
 							</div>
 						{% else %}
-							<div class="icon-book">
-								<span class="post-date">{{ date | date: "%-d" }}<br>{% include mes.html mes= date %}<br>{{ date | date: "%-Y" }}</span>
-								<a class="no-border" href="{{ site.url }}/lacasadelcompasdeoro/novela"> 
-									<img class="icon-book-image" src="{{ site.url }}/images/thumbs/casa_compas_portada.jpg">
-								</a>
-							</div>
+							{% if post.categories contains "uncuentomagicosobrelasfallas" %}
+								<div class="icon-book">						
+									<span class="post-date">{{ date | date: "%-d" }}<br>{% include mes.html mes= date %}<br>{{ date | date: "%-Y" }}</span>
+									<a class="no-border" href="{{ site.url }}/uncuentomagicosobrelasfallas/novela"> 
+										<img class="icon-book-image"  src="{{ site.url }}/images/posts/thumbs/fallas.jpg">
+									</a>
+								</div>
+							{% else %}
+								<div class="icon-book">
+									<span class="post-date">{{ date | date: "%-d" }}<br>{% include mes.html mes= date %}<br>{{ date | date: "%-Y" }}</span>
+									<a class="no-border" href="{{ site.url }}/lacasadelcompasdeoro/novela"> 
+										<img class="icon-book-image" src="{{ site.url }}/images/thumbs/casa_compas_portada.jpg">
+									</a>
+								</div>
+							{% endif %}
 						{% endif %}
 					{% endif %}
 				{% endif %}
