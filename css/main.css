@@ -28,6 +28,13 @@ h1, h2, h3, h4 {
 }
 
 /*BASIC STYLING*/
+iframe {
+	width: 100%;
+	aspect-ratio: 16 / 9;
+	border: 0;
+	display: block;
+  }
+
 a {
   -moz-transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out;
   -webkit-transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out;
