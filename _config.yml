@@ -11,7 +11,7 @@ email: email@mail.com
 description: > # this means to ignore newlines until "baseurl:"
   Begoña Valero, escritora.
 baseurl: "" # the subpath of your site, e.g. /blog
-port: 80
+port: 4000
 url: "https://www.begonavalero.com" # the base hostname & protocol for your site
 #url: "localhost" # the base hostname & protocol for your site
 
