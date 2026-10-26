@@ -40,7 +40,7 @@ const compartir = (await imagenDe(noticia))?.img;
       </div>
       {portada && (
         <div class="hero-img">
-          <Image src={portada} alt="" widths={[600, 1000, 1520].filter((w) => w <= portada.width)} sizes="(max-width: 800px) 100vw, 760px" loading="eager" />
+          <Image src={portada} alt="" widths={[600, 1000, 1520].filter((w) => w <= portada.width)} quality={75} sizes="(max-width: 800px) 100vw, 760px" loading="eager" fetchpriority="high" />
         </div>
       )}
       <div class="prose"><Content /></div>

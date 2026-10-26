@@ -8,5 +8,7 @@ const redirectPaths = new Set(Object.keys(redirects).map((p) => new URL(p, site)
 export default defineConfig({
   site,
   redirects,
+  // La hoja de estilos es pequeña: incrustarla evita una petición que bloquea el pintado.
+  build: { inlineStylesheets: 'always' },
   integrations: [sitemap({ filter: (page) => !redirectPaths.has(new URL(page).pathname) })],
 });

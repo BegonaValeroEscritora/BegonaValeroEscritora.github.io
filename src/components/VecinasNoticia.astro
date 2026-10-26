@@ -15,7 +15,7 @@ const items = [await tarjeta(posterior, '← Noticia más reciente'), await tarj
     {items.map((it, i) => it ? (
       <a class="vecina" href={`/noticias/${it.n.id}/`} rel={i === 0 ? 'prev' : 'next'}>
         <div class:list={['ph', { libro: it.imagen?.deLibro }]}>
-          {it.imagen && <Image src={it.imagen.img} alt="" widths={[300, 600].filter((w) => w <= it.imagen!.img.width)} sizes="(max-width: 700px) 100vw, 240px" />}
+          {it.imagen && <Image src={it.imagen.img} alt="" widths={[200, 300, 450].filter((w) => w <= it.imagen!.img.width)} quality={72} sizes="(max-width: 700px) 100vw, 240px" />}
         </div>
         <div>
           <div class="dir">{it.etiqueta}</div>

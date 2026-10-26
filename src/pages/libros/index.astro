@@ -13,10 +13,10 @@ const otras = todos.filter((l) => l.data.otraObra);
     <div class="list">
       {libros.map((l) => (
         <a class="row" href={`/libros/${l.id}/`} style="grid-template-columns: 160px 1fr">
-          <Portada libro={l} ancho={160} />
+          <Portada libro={l} ancho={160} sizes="(max-width: 560px) 45vw, 160px" />
           <div>
             <div class="tagline"><span class="tag">{l.data.genero}</span> · {l.data.editorial}, {l.data.año}</div>
-            <h3 style="font-family: var(--display); font-size: 32px">{l.data.titulo}</h3>
+            <h2 style="font-family: var(--display); font-size: 32px">{l.data.titulo}</h2>
             <p>{l.data.resumen}</p>
           </div>
         </a>
@@ -30,7 +30,7 @@ const otras = todos.filter((l) => l.data.otraObra);
             <Portada libro={l} ancho={240} />
             <div>
               <div class="tagline"><span class="tag">{l.data.genero}</span></div>
-              <h3 style="font-family: var(--display); font-size: 32px">{l.data.titulo}</h3>
+              <h2 style="font-family: var(--display); font-size: 32px">{l.data.titulo}</h2>
               <p>{l.data.resumen}</p>
             </div>
           </a>

@@ -13,7 +13,7 @@
   --rule: #e4e4e1;
   --accent: #7a1f2b;
   --accent-ink: #fff;
-  --gold: #94763a;
+  --gold: #7a5f2a;
   --dark: #161616;
   --display: 'Fraunces Variable', Georgia, serif;
   --serif: 'Literata Variable', Georgia, serif;
@@ -135,7 +135,7 @@ a.badge:hover { background: color-mix(in srgb, var(--gold) 15%, transparent); }
 .tagline { display: flex; gap: 10px; align-items: center; margin: 14px 0 6px; font-family: var(--sans); font-size: 12.5px; color: var(--muted); flex-wrap: wrap; }
 .tag { font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: .08em; font-size: 11.5px; }
 .card h3 { font-family: var(--serif); font-size: 19px; font-weight: 600; line-height: 1.35; }
-.card:hover h3, .row:hover h3 { color: var(--accent); }
+.card:hover h3, .row:hover :is(h2, h3) { color: var(--accent); }
 
 /* Estantería */
 .shelf { display: grid; grid-template-columns: repeat(6, 1fr); gap: 28px; align-items: start; }
@@ -158,7 +158,7 @@ a.badge:hover { background: color-mix(in srgb, var(--gold) 15%, transparent); }
 .list { margin-top: 24px; }
 .row { display: grid; grid-template-columns: 240px 1fr; gap: 28px; padding: 28px 0; border-bottom: 1px solid var(--rule); text-decoration: none; }
 .row .tagline { margin-top: 0; }
-.row h3 { font-family: var(--serif); font-size: 22px; font-weight: 600; line-height: 1.3; margin: 6px 0 8px; }
+.row :is(h2, h3) { font-family: var(--serif); font-size: 22px; font-weight: 600; line-height: 1.3; margin: 6px 0 8px; }
 .row p { margin: 0; color: var(--ink-2); font-size: 16.5px; }
 .pills { margin-top: 12px; display: flex; gap: 6px; flex-wrap: wrap; }
 .pill { font-family: var(--sans); font-size: 12px; padding: 3px 10px; border-radius: 999px; background: var(--paper-2); color: var(--ink-2); font-style: italic; text-decoration: none; }
@@ -168,7 +168,7 @@ a.pill:hover { background: var(--rule); }
 .pager a { border: 1px solid var(--rule); background: var(--card); }
 .pager a:hover { border-color: var(--ink); }
 .pager [aria-current='page'] { background: var(--ink); color: var(--paper); }
-.pager .dis { color: var(--muted); opacity: .5; border: 1px solid var(--rule); }
+.pager .dis { color: var(--muted); border: 1px solid var(--rule); }
 .pager-note { text-align: center; font-family: var(--sans); font-size: 13px; color: var(--muted); margin-bottom: 48px; }
 
 /* Libro */
@@ -363,3 +363,11 @@ footer.site-footer a:hover { color: #fff; }
   .vecinas { grid-template-columns: 1fr; gap: 16px; }
 }
 @media (max-width: 560px) { .vecina { grid-template-columns: 120px 1fr; gap: 14px; padding: 12px; } .vecina h3 { font-size: 17px; } }
+
+/* Móvil: cada grupo de filtros en una sola línea que se desliza en horizontal */
+@media (max-width: 700px) {
+  .filters { flex-wrap: nowrap; overflow-x: auto; margin-inline: -16px; padding-inline: 16px; scrollbar-width: none; scroll-padding-inline: 16px; mask-image: linear-gradient(to right, #000 85%, transparent); position: relative; }
+  .filters::-webkit-scrollbar { display: none; }
+  .filters .chip { flex: none; white-space: nowrap; }
+  .filters + .filters { margin-top: 0; }
+}

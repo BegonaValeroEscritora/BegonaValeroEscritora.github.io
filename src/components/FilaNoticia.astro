@@ -4,18 +4,18 @@ import { getEntries } from 'astro:content';
 import { TIPOS, extracto, imagenDe, type Noticia } from '../lib/contenido';
 import { fechaLarga, iso } from '../lib/fechas';
 
-interface Props { noticia: Noticia; }
-const { noticia } = Astro.props;
+interface Props { noticia: Noticia; prioritaria?: boolean; }
+const { noticia, prioritaria = false } = Astro.props;
 const imagen = await imagenDe(noticia);
 const libros = await getEntries(noticia.data.libros);
 ---
 <a class="row" href={`/noticias/${noticia.id}/`}>
   <div class:list={['ph', { libro: imagen?.deLibro }]}>
-    {imagen && <Image src={imagen.img} alt="" widths={[300, 600].filter((w) => w <= imagen.img.width)} sizes="(max-width: 560px) 100vw, 240px" />}
+    {imagen && <Image src={imagen.img} alt="" widths={[300, 450, 600].filter((w) => w <= imagen.img.width)} quality={72} sizes="(max-width: 560px) 100vw, 240px" loading={prioritaria ? 'eager' : 'lazy'} fetchpriority={prioritaria ? 'high' : undefined} />}
   </div>
   <div>
     <div class="tagline"><time datetime={iso(noticia.data.fecha)}>{fechaLarga(noticia.data.fecha)}</time></div>
-    <h3>{noticia.data.titulo}</h3>
+    <h2>{noticia.data.titulo}</h2>
     <p>{extracto(noticia)}</p>
     <div class="pills">
       <span class="pill tipo">{TIPOS[noticia.data.tipo].etiqueta}</span>

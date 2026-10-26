@@ -20,17 +20,25 @@ const actual = (ruta: string) => ((filtro ?? '') === ruta ? 'page' : undefined);
     <div class="eyebrow">Archivo · {todas.length} entradas desde {todas.at(-1)?.data.fecha.getUTCFullYear()}</div>
     <h1>{titulo}</h1>
   </div>
-  <nav class="filters" aria-label="Filtrar por tipo">
+  <nav class="filters" aria-label="Filtrar por tipo" data-desliza>
     {chips.map((c) => <a class="chip" href={c.ruta ? `/noticias/${c.ruta}/` : '/noticias/'} aria-current={actual(c.ruta)}>{c.texto}<span class="n">{c.n}</span></a>)}
   </nav>
-  <nav class="filters compact" aria-label="Filtrar por libro">
+  <nav class="filters compact" aria-label="Filtrar por libro" data-desliza>
     {libros.map((l) => <a class="chip" href={`/noticias/${l.id}/`} aria-current={actual(l.id)}><i>{l.data.titulo}</i></a>)}
   </nav>
-  <nav class="filters compact" aria-label="Filtrar por año">
+  <nav class="filters compact" aria-label="Filtrar por año" data-desliza>
     {años(todas).map((a) => <a class="chip" href={`/noticias/${a}/`} aria-current={actual(String(a))}>{a}</a>)}
   </nav>
   <div class="list">
-    {page.data.map((n) => <FilaNoticia noticia={n} />)}
+    {page.data.map((n, i) => <FilaNoticia noticia={n} prioritaria={i === 0} />)}
   </div>
   <Paginacion page={page} base={base} />
 </div>
+
+<script>
+  // En móvil cada fila de filtros se desliza en horizontal: centra el filtro activo para que se vea.
+  for (const fila of document.querySelectorAll<HTMLElement>('[data-desliza]')) {
+    const activo = fila.querySelector<HTMLElement>('[aria-current="page"]');
+    if (activo && fila.scrollWidth > fila.clientWidth) fila.scrollLeft = activo.offsetLeft - (fila.clientWidth - activo.offsetWidth) / 2;
+  }
+</script>

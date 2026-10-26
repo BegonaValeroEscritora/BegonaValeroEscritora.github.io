@@ -41,7 +41,7 @@ const jsonld = {
 <Base titulo={d.titulo} descripcion={d.resumen} imagen={d.portada} tipo="book" jsonld={jsonld}>
   <div class="wrap">
     <article class="book" data-pagefind-body>
-      <div class="cover-col">{d.portada && <Portada libro={libro} ancho={420} eager />}</div>
+      <div class="cover-col">{d.portada && <Portada libro={libro} ancho={420} sizes="(max-width: 900px) 260px, 380px" eager />}</div>
       <div>
         <div class="eyebrow">{[d.genero, [d.editorial, d.año].filter(Boolean).join(', ')].filter(Boolean).join(' · ')}</div>
         <h1>{d.titulo}</h1>

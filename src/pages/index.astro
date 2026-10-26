@@ -35,7 +35,7 @@ const jsonld = {
 <Base jsonld={jsonld}>
   <section class="hero">
     <div class="wrap">
-      <a href={`/libros/${destacado.id}/`}><Portada libro={destacado} ancho={360} eager /></a>
+      <a href={`/libros/${destacado.id}/`}><Portada libro={destacado} ancho={360} sizes="(max-width: 900px) 220px, 360px" eager /></a>
       <div class="text">
         <div class="eyebrow">{destacado.data.genero} · {destacado.data.editorial}, {destacado.data.año}</div>
         <h1>{destacado.data.titulo}</h1>
@@ -72,7 +72,7 @@ const jsonld = {
       <div class="shelf">
         {libros.map((l) => (
           <a href={`/libros/${l.id}/`}>
-            <Portada libro={l} ancho={180} />
+            <Portada libro={l} ancho={180} sizes="(max-width: 900px) 30vw, 180px" />
             <div class="t">{l.data.titulo}</div>
             <div class="y">{l.data.año} · {l.data.editorial}</div>
           </a>

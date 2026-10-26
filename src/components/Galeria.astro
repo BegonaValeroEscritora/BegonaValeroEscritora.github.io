@@ -9,7 +9,7 @@ const grandes = await Promise.all(fotos.map((f) => getImage({ src: f, width: Mat
   <div class="gallery" data-galeria>
     {fotos.map((f, i) => (
       <a href={grandes[i].src}>
-        <Image src={f} alt={`${titulo} (foto ${i + 1})`} widths={[240, 480].filter((w) => w <= f.width)} sizes="(max-width: 560px) 33vw, 180px" />
+        <Image src={f} alt={`${titulo} (foto ${i + 1})`} widths={[240, 480].filter((w) => w <= f.width)} quality={72} sizes="(max-width: 560px) 33vw, 180px" />
       </a>
     ))}
   </div>
