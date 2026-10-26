@@ -371,3 +371,7 @@ footer.site-footer a:hover { color: #fff; }
   .filters .chip { flex: none; white-space: nowrap; }
   .filters + .filters { margin-top: 0; }
 }
+
+/* Compartir en la portada */
+.share-home { display: flex; justify-content: center; border-top: 1px solid var(--rule); }
+.share-home .share { justify-content: center; margin: 32px 0 0; }

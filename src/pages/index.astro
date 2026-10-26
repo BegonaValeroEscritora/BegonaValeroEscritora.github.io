@@ -6,6 +6,7 @@ import Portada from '../components/Portada.astro';
 import TarjetaNoticia from '../components/TarjetaNoticia.astro';
 import Eventos from '../components/Eventos.astro';
 import Laurel from '../components/Laurel.astro';
+import Compartir from '../components/Compartir.astro';
 import { agenda, libros as getLibros, noticias as getNoticias } from '../lib/contenido';
 import { SITE } from '../config';
 import retrato from '../assets/autora/retrato.jpg';
@@ -90,7 +91,7 @@ const jsonld = {
       <aside class="author-card">
         <Image src={retrato} alt="Begoña Valero" width={224} height={224} />
         <div class="eyebrow">La autora</div>
-        <p>Natural de Banyeres de Mariola y médica de formación, narra la verdad histórica a través de la novela: Gutenberg, Plantin o un joven Cervantes recién liberado de su cautiverio en Argel.</p>
+        <p>Natural de Banyeres de Mariola y médica de formación, recrea la historia con rigor a través de sus novelas sobre Gutenberg, Plantin, Cervantes y los templarios.</p>
         <a class="more" href="/autora/">Conoce a Begoña →</a>
       </aside>
     </div>
@@ -100,6 +101,11 @@ const jsonld = {
     <div class="wrap">
       <div class="section-head"><h2>Últimas noticias</h2><a class="more" href="/noticias/">Ver todas →</a></div>
       <div class="cards">{noticias.map((n) => <TarjetaNoticia noticia={n} />)}</div>
+    </div>
+  </section>
+  <section class="block tight">
+    <div class="wrap share-home">
+      <Compartir titulo="Begoña Valero, escritora" />
     </div>
   </section>
 </Base>
