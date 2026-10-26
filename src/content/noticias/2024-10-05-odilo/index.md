@@ -5,7 +5,7 @@ fecha: 2024-10-05
 tipo: premio
 libros:
   - un-testigo-llamado-cervantes
-portada: ./01.jpg
+portada: ./03.jpg
 ---
 
 <p>El XXV aniversario de la Semana de Novela histórica de Cartagena concluye con un gran éxito de asistencia para celebrar una semana que cierra con la entrega del premio ODILO 2024 a Begoña Valero como mejor autora de novela histórica por “Un testigo llamado Cervantes” y a Santiago Posteguillo el premio Cuidad de Cartagena por Maldita Roma.</p>
