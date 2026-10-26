@@ -1,0 +1,60 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import retrato from '../assets/autora/retrato.jpg';
+import retrato4 from '../assets/autora/retrato-4.jpg';
+import retrato5 from '../assets/autora/retrato-5.jpg';
+import senadora from '../assets/autora/senadora.jpg';
+import redEscritoras from '../assets/autora/red-escritoras.jpg';
+import grupo from '../assets/autora/grupo-novela-historica.jpg';
+import escritoresHistoria from '../assets/autora/escritores-con-la-historia.png';
+import historias from '../content/libros/historias-de-la-historia/portada.jpg';
+
+const prensa = [retrato, retrato4, retrato5];
+---
+<Base titulo="Sobre la autora" descripcion="Biografía de Begoña Valero, escritora de novela histórica." tipo="article">
+  <div class="wrap">
+    <div class="bio" data-pagefind-body>
+      <div><Image class="portrait" src={retrato} alt="Begoña Valero" widths={[400, 800]} sizes="(max-width: 900px) 320px, 400px" loading="eager" /></div>
+      <div class="prose">
+        <div class="eyebrow">La autora</div>
+        <h1 style="font-size: clamp(44px, 6vw, 64px); margin: 8px 0 24px">Begoña Valero</h1>
+        <p>Begoña Valero es natural de Banyeres de Mariola (Alicante) y vive en Torrent (Valencia). Licenciada en Medicina y Cirugía por la Universidad de Valencia, trabaja para la Generalitat Valenciana. En sus novelas se esfuerza por narrar la verdad histórica, porque cree que uno de los mejores medios para transmitir de forma amena la Historia de España es a través de la literatura.</p>
+        <p>Es autora de <a href="/libros/el-trabajo-de-los-libros/"><i>El trabajo de los libros</i></a> (Editorial Denes, 2012), <a href="/libros/la-casa-del-compas-de-oro/"><i>La casa del Compás de Oro</i></a> (Grijalbo, 2017) y <a href="/libros/un-testigo-llamado-cervantes/"><i>Un testigo llamado Cervantes</i></a> (Editorial Sargantana, 2024). Esta última novela ha sido galardonada con el Premio de la Crítica Literaria Valenciana 2025 en la modalidad de narrativa, además del Premio ODILO 2024 a la mejor autora de novela histórica.</p>
+        <p><a href="/libros/la-venganza-de-los-templarios/"><i>La venganza de los templarios</i></a> (Sargantana, 2025) ha sido distinguida con el Galardón Letras del Mediterráneo 2024 en la modalidad de novela histórica.</p>
+        <p><a href="/libros/un-cuento-magico-sobre-las-fallas/"><i>Un cuento mágico sobre las Fallas</i></a> (Sargantana, 2025) es su debut en la literatura para niños, aunque también pueden leerlo los adultos. Está ilustrado por Martín Forés, con la colaboración de Paco Roca en la contraportada.</p>
+
+        <div class="facts">
+          <div class="fact">
+            <Image src={senadora} alt="" width={240} height={240} />
+            <p>Senadora del Museo de la Imprenta y de las Artes Gráficas de Valencia desde 2018, en reconocimiento a la difusión de la historia de la imprenta a través de la literatura: <i>El trabajo de los libros</i>, sobre la vida de Gutenberg, y <i>La casa del Compás de Oro</i>, sobre la vida de Christophe Plantin (<a href="/noticias/2018-05-06-senadora/">ver galería</a>).</p>
+          </div>
+          <div class="fact">
+            <Image src={redEscritoras} alt="" width={240} height={240} />
+            <p>Desde enero de 2019 es miembro de la <a href="https://www.casa-mediterraneo.es/la-red-de-mujeres-escritoras-del-mediterraneo-un-foro-de-conocimiento-y-promocion-de-autoras-de-ambas-orillas/">Red de Escritoras del Mediterráneo</a>, puesta en marcha por Casa Mediterráneo, consorcio público dirigido por el Ministerio de Asuntos Exteriores con sede en Alicante.</p>
+          </div>
+          <div class="fact">
+            <Image class="logo" src={grupo} alt="" width={240} />
+            <p>Desde 2020 forma parte del equipo administrador del <a href="https://www.facebook.com/groups/43148375142">Grupo de Novela Histórica</a> en lengua española más numeroso de Facebook, con más de 64.000 miembros.</p>
+          </div>
+          <div class="fact">
+            <Image class="logo" src={escritoresHistoria} alt="" width={240} />
+            <p>Desde junio de 2022 es miembro de <a href="http://www.escritoresconlahistoria.es/autores/begona-valero/">Escritores con la Historia</a>, asociación que reúne a una extensa selección de los mejores escritores de novela histórica en español.</p>
+          </div>
+          <div class="fact">
+            <Image src={historias} alt="" width={240} height={240} />
+            <p>Participa con un relato en <a href="/libros/historias-de-la-historia/"><i>Historias de la historia y otros cuentos</i></a> (Almuzara, 2024), obra coral de Escritores con la Historia junto a autores como Antonio Pérez Henares, Isabel San Sebastián, Juan Eslava Galán, Gonzalo Giner o Jorge Molist.</p>
+          </div>
+        </div>
+
+        <p>En 2020 fue jurado del III Premio Nacional de Novela Ateneo Mercantil de Valencia. En 2021 y 2022 fue jurado del XXXIX y XL Premio Ciudad de Valencia en la modalidad de narrativa en castellano: Premio Vicente Blasco Ibáñez.</p>
+
+        <h2 id="prensa">Fotos para prensa</h2>
+        <p>Pulsa una foto para descargarla en alta resolución. Para cualquier otro material, <a href="/contacto/">escríbeme</a>.</p>
+        <div class="press">
+          {prensa.map((f, i) => <a href={f.src} download={`begona-valero-${i + 1}.jpg`}><Image src={f} alt={`Begoña Valero, foto ${i + 1}`} width={300} /></a>)}
+        </div>
+      </div>
+    </div>
+  </div>
+</Base>

@@ -1,0 +1,13 @@
+---
+titulo: Begoña Valero entre las diez escritoras valencianas que debes leer y conocer
+fecha: 2019-12-19
+tipo: prensa
+libros:
+  - la-casa-del-compas-de-oro
+etiquetas:
+  - aqui escritoras
+---
+
+<br>
+<p>Bajo el titular "DIEZ ESCRITORAS VALENCIANAS QUE DEBES LEER Y CONOCER" se nombra a escritoras de prestigio de todos los tiempos como Isabel de Villena, María Cambrils, María Beneyto, Carmelina Sánchez-Cutillas o Laura Gallego en el ejemplar del mes de diciembre de "El periódico de Aquí València", que tiene una tirada de 40.000 ejemplares. Y una de ellas es Begoña Valero.
+<p/>

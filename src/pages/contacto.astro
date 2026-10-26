@@ -1,0 +1,15 @@
+---
+import Base from '../layouts/Base.astro';
+import Icono from '../components/Icono.astro';
+import { SITE } from '../config';
+---
+<Base titulo="Contacto" descripcion="Contacta con Begoña Valero para presentaciones, clubes de lectura o prensa.">
+  <div class="wrap">
+    <div class="page-head"><div class="eyebrow">Presentaciones, clubes de lectura y prensa</div><h1>Contacto</h1></div>
+    <div class="prose contact">
+      <p>Para presentaciones, clubes de lectura, entrevistas o cualquier otra consulta, escribe a Begoña Valero a:</p>
+      <p><a class="btn primary" href={`mailto:${SITE.email}`}><Icono nombre="correo" /> {SITE.email}</a></p>
+      <p>También puedes seguir su actividad en <a href={SITE.facebook}>Facebook</a>. Si eres periodista, en la página de la autora encontrarás <a href="/autora/#prensa">fotos para prensa</a>.</p>
+    </div>
+  </div>
+</Base>

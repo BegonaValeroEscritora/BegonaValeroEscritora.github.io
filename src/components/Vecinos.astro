@@ -1,0 +1,23 @@
+---
+// Navegación al elemento anterior/siguiente con un enlace central al listado.
+import { Image } from 'astro:assets';
+
+interface Vecino { href: string; titulo: string; etiqueta: string; img?: ImageMetadata; }
+interface Props { anterior?: Vecino; siguiente?: Vecino; listado: { href: string; texto: string }; portadas?: boolean; }
+const { anterior, siguiente, listado, portadas = false } = Astro.props;
+---
+<nav class="vecinos" aria-label="Navegación">
+  {anterior ? (
+    <a class="vecino prev" href={anterior.href} rel="prev">
+      {portadas && anterior.img && <Image src={anterior.img} alt="" width={80} />}
+      <span><small>← {anterior.etiqueta}</small>{anterior.titulo}</span>
+    </a>
+  ) : <span />}
+  <a class="listado" href={listado.href}>{listado.texto}</a>
+  {siguiente ? (
+    <a class="vecino next" href={siguiente.href} rel="next">
+      <span><small>{siguiente.etiqueta} →</small>{siguiente.titulo}</span>
+      {portadas && siguiente.img && <Image src={siguiente.img} alt="" width={80} />}
+    </a>
+  ) : <span />}
+</nav>

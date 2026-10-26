@@ -1,0 +1,17 @@
+---
+titulo: XI Club de lectura de El Corte Inglés con Begoña Valero y «La casa del Compás de Oro»
+fecha: 2017-12-18
+libros:
+  - la-casa-del-compas-de-oro
+---
+
+<p>
+El próximo día 18 de diciembre de 19 A 20 horas.
+Centro comercial de Avda. de Francia en Valencia.
+Podrá acudir cualquier lector de LA CASA DEL COMPÁS DE ORO, aunque no pertenezca al Club de lectura.
+</p>
+<p><b>Más información: </b><a href="http://ambitocultural.es/eventos/xi-club-de-lectura-begona-valero-la-casa-del-compas-de-oro/">El Corte Inglés</a></p>
+<h4>Mapa:</h4>
+<iframe src="
+https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1940.611336667919!2d-0.3475855355229391!3d39.457388691003075!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd6048efd0317401%3A0x3fb903f6c5d43bdc!2sEl+Corte+Ingl%C3%A9s!5e0!3m2!1sen!2ses!4v1512179348095"
+frameborder="0" style="border:0;overflow: hidden; height: 300px; width: 100%; " allowfullscreen></iframe>

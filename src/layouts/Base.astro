@@ -1,0 +1,107 @@
+---
+import { getImage } from 'astro:assets';
+import '../styles/global.css';
+import { SITE } from '../config';
+import Icono from '../components/Icono.astro';
+import retrato from '../assets/autora/retrato.jpg';
+
+interface Props {
+  titulo?: string;
+  descripcion?: string;
+  imagen?: ImageMetadata;
+  tipo?: 'website' | 'article' | 'book';
+  jsonld?: object;
+}
+const { titulo, descripcion = SITE.descripcion, imagen = retrato, tipo = 'website', jsonld } = Astro.props;
+const tituloCompleto = titulo ? `${titulo} · ${SITE.titulo}` : `${SITE.titulo} · Escritora`;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const og = await getImage({ src: imagen, width: Math.min(1200, imagen.width), format: 'jpg' });
+const seccion = '/' + Astro.url.pathname.split('/')[1];
+const enlaces = [
+  ['/', 'Inicio'],
+  ['/libros', 'Libros'],
+  ['/noticias', 'Noticias'],
+  ['/agenda', 'Agenda'],
+  ['/autora', 'Autora'],
+  ['/contacto', 'Contacto'],
+];
+const año = new Date().getFullYear();
+---
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{tituloCompleto}</title>
+  <meta name="description" content={descripcion} />
+  <link rel="canonical" href={canonical} />
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="alternate" type="application/rss+xml" title={`Noticias de ${SITE.titulo}`} href="/rss.xml" />
+  <link rel="sitemap" href="/sitemap-index.xml" />
+  <meta property="og:locale" content="es_ES" />
+  <meta property="og:site_name" content={SITE.titulo} />
+  <meta property="og:type" content={tipo} />
+  <meta property="og:title" content={titulo ?? SITE.titulo} />
+  <meta property="og:description" content={descripcion} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:image" content={new URL(og.src, Astro.site)} />
+  <meta property="og:image:width" content={String(og.attributes.width)} />
+  <meta property="og:image:height" content={String(og.attributes.height)} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content={new URL(og.src, Astro.site)} />
+  {jsonld && <script type="application/ld+json" set:html={JSON.stringify(jsonld)} />}
+  {SITE.goatcounter && (
+    <script data-goatcounter={`https://${SITE.goatcounter}.goatcounter.com/count`} async src="https://gc.zgo.at/count.js"></script>
+  )}
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="logo" href="/">Begoña Valero<small>Escritora</small></a>
+      <nav class="nav" aria-label="Principal">
+        {enlaces.map(([href, texto]) => <a href={href} aria-current={seccion === href ? 'page' : undefined}>{texto}</a>)}
+        <a class="icon-link" href="/buscar" aria-label="Buscar"><Icono nombre="buscar" /></a>
+      </nav>
+      <details class="menu">
+        <summary>Menú</summary>
+        <nav aria-label="Principal (móvil)">
+          {enlaces.map(([href, texto]) => <a href={href}>{texto}</a>)}
+          <a href="/buscar">Buscar</a>
+        </nav>
+      </details>
+    </div>
+  </header>
+
+  <main>
+    <slot />
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>
+        <a class="logo" href="/">Begoña Valero<small>Escritora</small></a>
+        <p style="max-width: 28em; margin-top: 16px">
+          Para presentaciones, clubes de lectura y prensa:<br />
+          <a href={`mailto:${SITE.email}`} style="color: #fff; text-decoration: underline">{SITE.email}</a>
+        </p>
+      </div>
+      <div>
+        <h2>Web</h2>
+        <ul>{enlaces.map(([href, texto]) => <li><a href={href}>{texto}</a></li>)}</ul>
+      </div>
+      <div>
+        <h2>Sígueme</h2>
+        <ul class="socials">
+          <li><a href={SITE.facebook}><Icono nombre="facebook" /> Facebook</a></li>
+          <li><a href={`mailto:${SITE.email}`}><Icono nombre="correo" /> Correo</a></li>
+          <li><a href="/rss.xml"><Icono nombre="rss" /> RSS de noticias</a></li>
+        </ul>
+      </div>
+      <div class="fine">
+        <span>© 2012–{año} Begoña Valero</span>
+        <span>Web: <a href={SITE.creditos.url}>{SITE.creditos.nombre}</a></span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

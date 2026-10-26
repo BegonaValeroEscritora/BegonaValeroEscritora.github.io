@@ -1,0 +1,13 @@
+---
+titulo: Presentación en Torrent
+subtitulo: Begoña Valero descubre en Torrent la cara oculta de Gutenberg en su obra “El trabajo de los libros”
+fecha: 2012-11-04
+tipo: presentacion
+libros:
+  - el-trabajo-de-los-libros
+etiquetas:
+  - torrent
+  - valencia
+---
+
+<p>El salón de actos de la Casa de Cultura de Torrent acogió la presentación del libro de Begoña Valero: “El trabajo de los libros” el día 22 de noviembre a las 20h. La alcaldesa de Torrent, Amparo Folgado dio la bienvenida a los asistentes y a la escritora, a la que precedió, y presentó a todos los oradores. Entre las autoridades presentes destacó el President de les Corts Valencianes, Juan Cotino, así como críticos de literatura y amantes de la novela histórica. La Delegación de Cultura, a cargo del delegado, Modest Muñoz, fomenta la lectura a través de presentaciones como esta, en la que se recoge una novela llena de misterio y aventuras en la Edad Media y nos descubre la cara oculta de Gutenberg.</p>

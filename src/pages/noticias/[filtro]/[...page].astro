@@ -1,0 +1,26 @@
+---
+import type { GetStaticPaths } from 'astro';
+import Base from '../../../layouts/Base.astro';
+import ListaNoticias from '../../../components/ListaNoticias.astro';
+import { TIPOS, años, libros, noticias } from '../../../lib/contenido';
+import { SITE } from '../../../config';
+
+// Listados filtrados: /noticias/prensa/, /noticias/premios/2/, /noticias/<libro>/, /noticias/2025/ …
+export const getStaticPaths = (async ({ paginate }) => {
+  const todas = await noticias();
+  const filtros = [
+    ...Object.entries(TIPOS).map(([k, t]) => ({ filtro: t.ruta, titulo: t.plural, items: todas.filter((n) => n.data.tipo === k) })),
+    ...(await libros()).map((l) => ({ filtro: l.id, titulo: l.data.titulo, items: todas.filter((n) => n.data.libros.some((r) => r.id === l.id)) })),
+    ...años(todas).map((a) => ({ filtro: String(a), titulo: `Noticias de ${a}`, items: todas.filter((n) => n.data.fecha.getUTCFullYear() === a) })),
+  ].filter((f) => f.items.length > 0);
+  return filtros.flatMap((f) =>
+    paginate(f.items, { pageSize: SITE.noticiasPorPagina, params: { filtro: f.filtro }, props: { titulo: f.titulo } }),
+  );
+}) satisfies GetStaticPaths;
+
+const { page, titulo } = Astro.props;
+const { filtro } = Astro.params;
+---
+<Base titulo={page.currentPage > 1 ? `${titulo} (página ${page.currentPage})` : titulo}>
+  <ListaNoticias page={page} filtro={filtro} titulo={titulo} />
+</Base>

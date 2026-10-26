@@ -1,0 +1,25 @@
+---
+import Icono from './Icono.astro';
+
+interface Props { titulo: string; }
+const { titulo } = Astro.props;
+const url = new URL(Astro.url.pathname, Astro.site).href;
+const e = encodeURIComponent;
+---
+<div class="share">
+  Compartir:
+  <a href={`https://wa.me/?text=${e(`${titulo} ${url}`)}`}><Icono nombre="whatsapp" /> WhatsApp</a>
+  <a href={`https://www.facebook.com/sharer/sharer.php?u=${e(url)}`}><Icono nombre="facebook" /> Facebook</a>
+  <a href={`https://x.com/intent/post?text=${e(titulo)}&url=${e(url)}`}><Icono nombre="x" /> X</a>
+  <a href={`mailto:?subject=${e(titulo)}&body=${e(url)}`}><Icono nombre="correo" /> Correo</a>
+  <button type="button" data-copiar={url}><Icono nombre="enlace" /> <span>Copiar enlace</span></button>
+</div>
+
+<script>
+  for (const b of document.querySelectorAll<HTMLButtonElement>('[data-copiar]')) {
+    b.addEventListener('click', async () => {
+      await navigator.clipboard.writeText(b.dataset.copiar!);
+      b.querySelector('span')!.textContent = '¡Copiado!';
+    });
+  }
+</script>

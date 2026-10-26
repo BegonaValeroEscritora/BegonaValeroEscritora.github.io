@@ -1,0 +1,16 @@
+---
+import { Image } from 'astro:assets';
+import { TIPOS, imagenDe, type Noticia } from '../lib/contenido';
+import { fechaCorta, iso } from '../lib/fechas';
+
+interface Props { noticia: Noticia; }
+const { noticia } = Astro.props;
+const imagen = await imagenDe(noticia);
+---
+<a class="card" href={`/noticias/${noticia.id}/`}>
+  <div class:list={['ph', { libro: imagen?.deLibro }]}>
+    {imagen && <Image src={imagen.img} alt="" widths={[400, 800].filter((w) => w <= imagen.img.width)} sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 360px" />}
+  </div>
+  <div class="tagline"><span class="tag">{TIPOS[noticia.data.tipo].etiqueta}</span><time datetime={iso(noticia.data.fecha)}>{fechaCorta(noticia.data.fecha)}</time></div>
+  <h3>{noticia.data.titulo}</h3>
+</a>

@@ -1,0 +1,49 @@
+---
+import { getEntries } from 'astro:content';
+import type { Evento } from '../lib/contenido';
+import { iso, mesCorto } from '../lib/fechas';
+
+interface Props { eventos: Evento[]; max?: number; resumen?: boolean; }
+const { eventos, max = eventos.length, resumen = true } = Astro.props;
+const conLibros = await Promise.all(eventos.map(async (e) => ({ e, libros: await getEntries(e.data.libros) })));
+const texto = (e: Evento) => {
+  const t = (e.body ?? '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+  return t.length > 160 ? t.slice(0, 160).replace(/\s\S*$/, '') + '…' : t;
+};
+---
+<ul class="events" data-proximos data-max={max}>
+  {conLibros.map(({ e, libros }) => (
+    <li data-fecha={iso(e.data.fecha)}>
+      <div class="cal"><span class="m">{mesCorto(e.data.fecha)}</span><span class="d">{e.data.fecha.getUTCDate()}</span></div>
+      <a href={`/agenda/${e.id}/`}>
+        <h3>{e.data.titulo} <span class="today" hidden>Hoy</span></h3>
+        {(e.data.lugar || e.data.hora || libros.length > 0) && (
+          <div class="meta">
+            {[e.data.lugar, e.data.hora].filter(Boolean).join(' · ')}
+            {libros.length > 0 && <>{(e.data.lugar || e.data.hora) && ' · '}<i>{libros.map((l) => l.data.titulo).join(', ')}</i></>}
+          </div>
+        )}
+        {resumen && <p>{texto(e)}</p>}
+      </a>
+    </li>
+  ))}
+</ul>
+<p class="empty" data-vacio hidden={eventos.length > 0}>No hay eventos programados por ahora.</p>
+
+<script>
+  // La web se genera una vez al día; este script corrige la lista si alguien la visita
+  // después de que un evento haya pasado: oculta los pasados y marca los de hoy.
+  const hoy = new Date().toLocaleDateString('en-CA');
+  for (const ul of document.querySelectorAll<HTMLElement>('[data-proximos]')) {
+    let visibles = 0;
+    const max = Number(ul.dataset.max);
+    for (const li of ul.querySelectorAll<HTMLElement>('li[data-fecha]')) {
+      const f = li.dataset.fecha!;
+      li.hidden = f < hoy || visibles >= max;
+      if (!li.hidden) visibles++;
+      if (f === hoy) li.querySelector<HTMLElement>('.today')!.hidden = false;
+    }
+    const vacio = ul.nextElementSibling as HTMLElement | null;
+    if (vacio?.dataset.vacio !== undefined) vacio.hidden = visibles > 0;
+  }
+</script>

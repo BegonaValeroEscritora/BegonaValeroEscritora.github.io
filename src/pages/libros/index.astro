@@ -1,0 +1,41 @@
+---
+import Base from '../../layouts/Base.astro';
+import Portada from '../../components/Portada.astro';
+import { libros as getLibros } from '../../lib/contenido';
+
+const todos = await getLibros();
+const libros = todos.filter((l) => !l.data.otraObra);
+const otras = todos.filter((l) => l.data.otraObra);
+---
+<Base titulo="Libros" descripcion="Novelas y relatos publicados por Begoña Valero.">
+  <div class="wrap">
+    <div class="page-head"><div class="eyebrow">Obra publicada</div><h1>Libros</h1></div>
+    <div class="list">
+      {libros.map((l) => (
+        <a class="row" href={`/libros/${l.id}/`} style="grid-template-columns: 160px 1fr">
+          <Portada libro={l} ancho={160} />
+          <div>
+            <div class="tagline"><span class="tag">{l.data.genero}</span> · {l.data.editorial}, {l.data.año}</div>
+            <h3 style="font-family: var(--display); font-size: 32px">{l.data.titulo}</h3>
+            <p>{l.data.resumen}</p>
+          </div>
+        </a>
+      ))}
+    </div>
+    {otras.length > 0 && (
+      <section class="block">
+        <div class="section-head"><h2>Otras obras</h2></div>
+        {otras.map((l) => (
+          <a class="row" href={`/libros/${l.id}/`}>
+            <Portada libro={l} ancho={240} />
+            <div>
+              <div class="tagline"><span class="tag">{l.data.genero}</span></div>
+              <h3 style="font-family: var(--display); font-size: 32px">{l.data.titulo}</h3>
+              <p>{l.data.resumen}</p>
+            </div>
+          </a>
+        ))}
+      </section>
+    )}
+  </div>
+</Base>

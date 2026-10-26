@@ -1,0 +1,57 @@
+---
+import { Image, getImage } from 'astro:assets';
+
+interface Props { fotos: ImageMetadata[]; titulo: string; }
+const { fotos, titulo } = Astro.props;
+const grandes = await Promise.all(fotos.map((f) => getImage({ src: f, width: Math.min(1600, f.width) })));
+---
+{fotos.length > 0 && (
+  <div class="gallery" data-galeria>
+    {fotos.map((f, i) => (
+      <a href={grandes[i].src}>
+        <Image src={f} alt={`${titulo} (foto ${i + 1})`} widths={[240, 480].filter((w) => w <= f.width)} sizes="(max-width: 560px) 33vw, 180px" />
+      </a>
+    ))}
+  </div>
+)}
+<dialog class="lightbox" aria-label="Galería de fotos">
+  <figure><img alt="" /></figure>
+  <button class="close" aria-label="Cerrar">×</button>
+  <button class="prev" aria-label="Anterior">‹</button>
+  <button class="next" aria-label="Siguiente">›</button>
+  <div class="count"></div>
+</dialog>
+
+<script>
+  const galeria = document.querySelector<HTMLElement>('[data-galeria]');
+  const dialog = document.querySelector<HTMLDialogElement>('dialog.lightbox');
+  if (galeria && dialog) {
+    const links = [...galeria.querySelectorAll('a')];
+    const img = dialog.querySelector('img')!;
+    const count = dialog.querySelector('.count')!;
+    let i = 0;
+    const show = (n: number) => {
+      i = (n + links.length) % links.length;
+      img.src = links[i].href;
+      img.alt = links[i].querySelector('img')!.alt;
+      count.textContent = `${i + 1} / ${links.length}`;
+    };
+    links.forEach((a, n) => a.addEventListener('click', (ev) => { ev.preventDefault(); show(n); dialog.showModal(); }));
+    dialog.querySelector('.close')!.addEventListener('click', () => dialog.close());
+    dialog.querySelector('.prev')!.addEventListener('click', () => show(i - 1));
+    dialog.querySelector('.next')!.addEventListener('click', () => show(i + 1));
+    dialog.addEventListener('click', (ev) => { if (ev.target === dialog || ev.target === dialog.querySelector('figure')) dialog.close(); });
+    dialog.addEventListener('keydown', (ev) => {
+      if (ev.key === 'ArrowLeft') show(i - 1);
+      if (ev.key === 'ArrowRight') show(i + 1);
+    });
+    let x0: number | null = null;
+    dialog.addEventListener('touchstart', (ev) => { x0 = ev.touches[0].clientX; }, { passive: true });
+    dialog.addEventListener('touchend', (ev) => {
+      if (x0 === null) return;
+      const dx = ev.changedTouches[0].clientX - x0;
+      if (Math.abs(dx) > 50) show(dx < 0 ? i + 1 : i - 1);
+      x0 = null;
+    });
+  }
+</script>

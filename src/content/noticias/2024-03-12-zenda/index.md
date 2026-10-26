@@ -1,0 +1,18 @@
+---
+titulo: Cómo se hizo "Un testigo llamado Cervantes" contado por la autora en la prestigiosa revista literaria Zenda
+subtitulo: Una historia real e inédita en la literatura sobre la vida de Cervantes
+fecha: 2024-03-12
+tipo: prensa
+libros:
+  - un-testigo-llamado-cervantes
+portada: ./01.jpg
+etiquetas:
+  - valencia
+---
+
+<p>Descubrir la historia que llena las páginas de Un testigo llamado Cervantes me
+produjo una sensación entre euforia, sorpresa y desconcierto. La sensación
+que cualquier escritor de novela histórica percibe cuando se encuentra con un
+pedazo de vida desconocido de un personaje ilustre. Si ese personaje es
+Miguel de Cervantes el asombro domina cualquier emoción... 
+<a href="https://www.zendalibros.com/una-historia-real-e-inedita-en-la-literatura-sobre-la-vida-de-cervantes/">Leer artículo</a></p>

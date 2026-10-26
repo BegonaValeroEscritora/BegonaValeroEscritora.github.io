@@ -1,0 +1,6 @@
+---
+titulo: Firma de ejemplares en la Feria del Libro de Valencia (Galeradas)
+fecha: 2025-04-28
+---
+
+<p>Firma de ejemplares en la Feria del Libro de Valencia de 11:00h a 14:00h en la Caseta Galeradas.</p>

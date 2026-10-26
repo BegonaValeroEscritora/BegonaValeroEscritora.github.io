@@ -1,0 +1,27 @@
+---
+import type { Page } from 'astro';
+
+interface Props { page: Page<unknown>; base: string; }
+const { page, base } = Astro.props;
+const url = (n: number) => (n === 1 ? `${base}/` : `${base}/${n}/`);
+// Muestra la primera, la última y las vecinas de la actual, con «…» en los huecos.
+const numeros: (number | '…')[] = [];
+for (let n = 1; n <= page.lastPage; n++) {
+  if (n === 1 || n === page.lastPage || Math.abs(n - page.currentPage) <= 1) numeros.push(n);
+  else if (numeros.at(-1) !== '…') numeros.push('…');
+}
+---
+{page.lastPage > 1 && (
+  <>
+    <nav class="pager" aria-label="Paginación">
+      {page.url.prev ? <a href={page.url.prev} rel="prev">← Más recientes</a> : <span class="dis">← Más recientes</span>}
+      {numeros.map((n) =>
+        n === '…' ? <span>…</span>
+        : n === page.currentPage ? <span aria-current="page">{n}</span>
+        : <a href={url(n)}>{n}</a>
+      )}
+      {page.url.next ? <a href={page.url.next} rel="next">Anteriores →</a> : <span class="dis">Anteriores →</span>}
+    </nav>
+    <p class="pager-note">Página {page.currentPage} de {page.lastPage} · {page.total} noticias</p>
+  </>
+)}

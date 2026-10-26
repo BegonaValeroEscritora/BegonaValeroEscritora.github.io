@@ -1,0 +1,22 @@
+---
+// Corona de laurel en SVG: una rama de hojas (por fuera y por dentro del tallo) a lo largo de un arco, reflejada.
+interface Props { año?: number; }
+const { año } = Astro.props;
+const cx = 32, cy = 31, r = 21, a0 = 100, a1 = 228, n = 7;
+const p = (a: number) => [cx + r * Math.cos((a * Math.PI) / 180), cy + r * Math.sin((a * Math.PI) / 180)];
+const hoja = ([x, y]: number[], rot: number, s: number) =>
+  `<path d="M0 0C${3.4 * s} ${-3 * s} ${3.4 * s} ${-9 * s} 0 ${-12 * s}C${-3.4 * s} ${-9 * s} ${-3.4 * s} ${-3 * s} 0 0Z" transform="translate(${x.toFixed(2)} ${y.toFixed(2)}) rotate(${rot.toFixed(1)})"/>`;
+const [sx, sy] = p(a0), [ex, ey] = p(a1);
+let rama = `<path d="M${sx} ${sy}A${r} ${r} 0 0 1 ${ex} ${ey}" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>`;
+for (let i = 0; i < n; i++) {
+  const a = a0 + 8 + (i * (a1 - a0 - 8)) / (n - 1);
+  const s = 0.95 - i * 0.05;
+  rama += hoja(p(a), a + 90 + 38, s) + hoja(p(a), a + 90 - 38, s * 0.8);
+}
+rama += hoja(p(a1), a1, 0.7);
+const svg = `<g fill="currentColor">${rama}</g><g fill="currentColor" transform="translate(64 0) scale(-1 1)">${rama}</g>`;
+---
+<svg class="laurel" viewBox="0 0 64 60" aria-hidden="true">
+  <Fragment set:html={svg} />
+  {año && <text x="32" y="31" text-anchor="middle" dominant-baseline="central">{año}</text>}
+</svg>

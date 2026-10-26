@@ -1,0 +1,17 @@
+---
+titulo: Fiestas de Xirivella 2024
+subtitulo: Begoña Valero pronuncia el pregón de las Fiestas Patronales de Xirivella en honor a la Virgen de la Salut
+fecha: 2024-08-30
+tipo: prensa
+libros:
+  - un-testigo-llamado-cervantes
+portada: ./01.jpg
+---
+
+<p>El día 30 de agosto a las 22:30, Begoña Valero tuvo el honor de pronunciar el pregón que iniciaba las Fiestas de Xirivella ante más de cuatrocientas personas que asistieron al emotivo acto. Acto organizado por los Clavarios de la Mare Déu de la Salut donde participaron, tanto el presidente de los Clavarios, Paco Tellez, como la alcaldesa de la localidad, Paqui Bartual ,y el rector del Santuario de la Mare de Déu de la Salut, Luis Ramón Martínez. Actuó como mantenedor Vicente Cotino.</p>
+
+<p>Begoña Valero agradeció a los Clavarios de la Mare de Déu de la Salut haberla designado para representar en su nombre lo que significa Xirivella y sus fiestas. Un pregón que recordaba cómo era Xirivella hace cuatro décadas y cómo ha evolucionado. Una localidad que primero acogió a personas procedentes de otras provincias españolas y ahora las provenientes de otros países. En ambos casos, siempre velando por la correcta convivencia sin olvidar nuestras costumbres y tradiciones. Unas tradiciones que nos unen y que son la base de nuestra educación y vivencias.</p>
+
+<p><a href="https://www.instagram.com/reel/C_VKK-WtTx8/">Ver Instagram Reel.</a></p>
+
+<p>Galería fotográfica:</p>

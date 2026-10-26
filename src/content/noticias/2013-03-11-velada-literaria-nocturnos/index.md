@@ -1,0 +1,15 @@
+---
+titulo: Begoña Valero, nombrada Académica de La Academia de Los Nocturnos
+subtitulo: La Academia de Los Nocturnos nombra Académica de Honor a Begoña Valero en una velada literaria que la escritora de “El trabajo de los libros” dedicó a la novela histórica
+fecha: 2013-03-11
+tipo: presentacion
+libros:
+  - el-trabajo-de-los-libros
+etiquetas:
+  - nocturnos
+---
+
+<p>El 6 de marzo de 2013, Begoña Valero fue la encargada de ofrecer la conferencia titulada: Cómo se escribe una novela histórica. Especial referencia a Gutenberg, para la prestigiosa Academia literaria de Los Nocturnos, fundada por Bernardo Catalá de Valeriola en la ciudad de Valencia en el año 1591. En su Palacio se reunían todos los miércoles 45 personas de la nobleza y de elevado prestigio personal, como Guillén de Castro o Gaspar Aguilar, entre otros, para celebrar una tertulia literaria.
+<p></p>
+Al finalizar el acto se le hizo entrega del Diploma de Académico de Honor de Los Nocturnos.
+</p>

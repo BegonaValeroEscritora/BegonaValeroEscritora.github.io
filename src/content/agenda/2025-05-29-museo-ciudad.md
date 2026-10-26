@@ -1,0 +1,6 @@
+---
+titulo: El Tribunal de las aguas en la literatura en el Museo de la Ciudad
+fecha: 2025-05-29
+---
+
+<p>En el Museo de la Ciudad del Ayuntamiento de Valencia “El Tribunal de las aguas en la literatura” de la mano de María Villamayor y Begoña Valero a las 18:00 horas.</p>

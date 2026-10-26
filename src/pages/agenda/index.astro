@@ -1,0 +1,33 @@
+---
+import Base from '../../layouts/Base.astro';
+import Calendario from '../../components/Calendario.astro';
+import Eventos from '../../components/Eventos.astro';
+import { agenda } from '../../lib/contenido';
+import { fechaLarga, iso } from '../../lib/fechas';
+
+const { proximos, pasados } = await agenda();
+const porAño = Map.groupBy(pasados, (e) => e.data.fecha.getUTCFullYear());
+---
+<Base titulo="Agenda" descripcion="Presentaciones, firmas y clubes de lectura con Begoña Valero.">
+  <div class="wrap">
+    <div class="page-head"><div class="eyebrow">Presentaciones, firmas y clubes de lectura</div><h1>Agenda</h1></div>
+    <section class="block two agenda-top" style="padding-top: 32px">
+      <div>
+        <div class="section-head"><h2>Próximos eventos</h2></div>
+        <Eventos eventos={proximos} />
+      </div>
+      <aside><Calendario eventos={[...proximos, ...pasados]} /></aside>
+    </section>
+    <section class="block tight">
+      <div class="section-head"><h2>Eventos pasados</h2><span class="eyebrow">{pasados.length} eventos</span></div>
+      {[...porAño].map(([año, eventos]) => (
+        <>
+          <h3 class="year-head">{año}</h3>
+          <ul class="past">
+            {eventos.map((e) => <li><time datetime={iso(e.data.fecha)}>{fechaLarga(e.data.fecha)}</time><a href={`/agenda/${e.id}/`}>{e.data.titulo}</a></li>)}
+          </ul>
+        </>
+      ))}
+    </section>
+  </div>
+</Base>

@@ -1,0 +1,59 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { Image } from 'astro:assets';
+import { getEntries, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Galeria from '../../components/Galeria.astro';
+import Compartir from '../../components/Compartir.astro';
+import TarjetaNoticia from '../../components/TarjetaNoticia.astro';
+import Vecinos from '../../components/Vecinos.astro';
+import { TIPOS, extracto, fotosDe, imagenDe, noticias, portadaDe, type Noticia } from '../../lib/contenido';
+import { fechaLarga, iso } from '../../lib/fechas';
+
+export const getStaticPaths = (async () => {
+  const todas = await noticias();
+  return todas.map((noticia, i) => ({
+    params: { id: noticia.id },
+    props: { noticia, posterior: todas[i - 1], previa: todas[i + 1], relacionadas: todas.filter((n, j) => j !== i && n.data.libros.some((l) => noticia.data.libros.some((m) => m.id === l.id))).slice(0, 3) },
+  }));
+}) satisfies GetStaticPaths;
+
+const { noticia, relacionadas, posterior, previa } = Astro.props as { noticia: Noticia; relacionadas: Noticia[]; posterior?: Noticia; previa?: Noticia };
+const vecina = (n?: Noticia, etiqueta = '') => n && { href: `/noticias/${n.id}/`, titulo: n.data.titulo, etiqueta };
+const { Content } = await render(noticia);
+const portada = portadaDe(noticia)?.img;
+const fotos = fotosDe(noticia.id).filter((f) => f.archivo !== portadaDe(noticia)?.archivo).map((f) => f.img);
+const libros = await getEntries(noticia.data.libros);
+const tipo = TIPOS[noticia.data.tipo];
+const compartir = (await imagenDe(noticia))?.img;
+---
+<Base titulo={noticia.data.titulo} descripcion={extracto(noticia, 30)} imagen={compartir} tipo="article">
+  <div class="wrap">
+    <article class="article" data-pagefind-body>
+      <div class="tagline">
+        <time datetime={iso(noticia.data.fecha)} data-pagefind-meta="fecha">{fechaLarga(noticia.data.fecha)}</time>
+      </div>
+      <h1>{noticia.data.titulo}</h1>
+      {noticia.data.subtitulo && <p class="sub">{noticia.data.subtitulo}</p>}
+      <div class="pills">
+        <a class="pill tipo" href={`/noticias/${tipo.ruta}/`}>{tipo.etiqueta}</a>
+        {libros.map((l) => <a class="pill" href={`/libros/${l.id}/`}>{l.data.titulo}</a>)}
+      </div>
+      {portada && (
+        <div class="hero-img">
+          <Image src={portada} alt="" widths={[600, 1000, 1520].filter((w) => w <= portada.width)} sizes="(max-width: 800px) 100vw, 760px" loading="eager" />
+        </div>
+      )}
+      <div class="prose"><Content /></div>
+      <Galeria fotos={fotos} titulo={noticia.data.titulo} />
+      <Compartir titulo={noticia.data.titulo} />
+      <Vecinos anterior={vecina(posterior, 'Noticia más reciente')} siguiente={vecina(previa, 'Noticia anterior')} listado={{ href: '/noticias/', texto: 'Todas las noticias' }} />
+    </article>
+    {relacionadas.length > 0 && (
+      <section class="block tight">
+        <div class="section-head"><h2>Más noticias sobre {libros[0].data.titulo}</h2><a class="more" href={`/noticias/${libros[0].id}/`}>Ver todas →</a></div>
+        <div class="cards">{relacionadas.map((n) => <TarjetaNoticia noticia={n} />)}</div>
+      </section>
+    )}
+  </div>
+</Base>

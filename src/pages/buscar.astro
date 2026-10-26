@@ -1,0 +1,22 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base titulo="Buscar" descripcion="Busca en las noticias, libros y agenda de Begoña Valero.">
+  <div class="wrap" style="max-width: 820px">
+    <div class="page-head"><h1>Buscar</h1><p>Noticias, libros y eventos desde 2012.</p></div>
+    <link href="/pagefind/pagefind-ui.css" rel="stylesheet" />
+    <div id="buscador"></div>
+    <script is:inline src="/pagefind/pagefind-ui.js"></script>
+    <script is:inline>
+      window.addEventListener('DOMContentLoaded', () => {
+        if (!window.PagefindUI) {
+          document.getElementById('buscador').textContent = 'El buscador solo funciona en la web publicada (npm run build).';
+          return;
+        }
+        const ui = new PagefindUI({ element: '#buscador', showSubResults: false, resetStyles: false });
+        const q = new URLSearchParams(location.search).get('q');
+        if (q) ui.triggerSearch(q);
+      });
+    </script>
+  </div>
+</Base>

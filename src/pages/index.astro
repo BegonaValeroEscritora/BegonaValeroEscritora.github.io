@@ -1,0 +1,105 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection, getEntry } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Portada from '../components/Portada.astro';
+import TarjetaNoticia from '../components/TarjetaNoticia.astro';
+import Eventos from '../components/Eventos.astro';
+import Laurel from '../components/Laurel.astro';
+import { agenda, libros as getLibros, noticias as getNoticias } from '../lib/contenido';
+import { SITE } from '../config';
+import retrato from '../assets/autora/retrato.jpg';
+
+const libros = (await getLibros()).filter((l) => !l.data.otraObra);
+const destacado = libros.find((l) => l.data.destacado) ?? libros[0];
+const noticias = (await getNoticias()).slice(0, 6);
+const { proximos } = await agenda();
+const premios = await Promise.all(
+  (await getCollection('premios')).map(async (p) => {
+    const noticia = (await getEntry(p.data.noticia))!;
+    return { ...p.data, noticia, libro: (await getEntry(p.data.libro))! };
+  }),
+).then((ps) => ps.sort((a, b) => b.noticia.data.fecha.valueOf() - a.noticia.data.fecha.valueOf()));
+const premiosDestacado = premios.filter((p) => p.libro.id === destacado.id);
+
+const jsonld = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Begoña Valero',
+  jobTitle: 'Escritora',
+  url: Astro.site,
+  sameAs: [SITE.facebook],
+  award: premios.map((p) => `${p.nombre} ${p.año}`),
+};
+---
+<Base jsonld={jsonld}>
+  <section class="hero">
+    <div class="wrap">
+      <a href={`/libros/${destacado.id}/`}><Portada libro={destacado} ancho={360} eager /></a>
+      <div class="text">
+        <div class="eyebrow">{destacado.data.genero} · {destacado.data.editorial}, {destacado.data.año}</div>
+        <h1>{destacado.data.titulo}</h1>
+        {premiosDestacado.length > 0 && (
+          <div class="badges">{premiosDestacado.map((p) => <a class="badge" href={`/noticias/${p.noticia.id}/`}>{p.nombre} {p.año}</a>)}</div>
+        )}
+        <p class="lead">{destacado.data.resumen}</p>
+        <div class="actions">
+          <a class="btn primary" href={`/libros/${destacado.id}/`}>Descubre la novela</a>
+          {destacado.data.compra[0] && <a class="btn ghost" href={destacado.data.compra[0].url}>Dónde comprarla</a>}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="laurels">
+    <ul class="wrap">
+      {premios.map((p) => (
+        <li>
+          <a href={`/noticias/${p.noticia.id}/`}>
+            <Laurel año={p.año} />
+            <strong>{p.nombre}</strong>
+            <span>{p.detalle}</span>
+            <span><i>{p.libro.data.titulo}</i></span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+
+  <section class="block">
+    <div class="wrap two">
+      <div>
+        <div class="section-head"><h2>Próximos eventos</h2><a class="more" href="/agenda/">Toda la agenda →</a></div>
+        <Eventos eventos={proximos.slice(0, 6)} max={3} />
+      </div>
+      <aside class="author-card">
+        <Image src={retrato} alt="Begoña Valero" width={224} height={224} />
+        <div class="eyebrow">La autora</div>
+        <p>Natural de Banyeres de Mariola y médica de formación, narra la verdad histórica a través de la novela: Gutenberg, Plantin o un joven Cervantes recién liberado de su cautiverio en Argel.</p>
+        <a class="more" href="/autora/">Conoce a Begoña →</a>
+      </aside>
+    </div>
+  </section>
+
+  <section class="block tight">
+    <div class="wrap">
+      <div class="section-head"><h2>Últimas noticias</h2><a class="more" href="/noticias/">Ver todas →</a></div>
+      <div class="cards">{noticias.map((n) => <TarjetaNoticia noticia={n} />)}</div>
+    </div>
+  </section>
+
+  <section class="block tight">
+    <div class="wrap">
+      <div class="section-head"><h2>Libros</h2><a class="more" href="/libros/">Todos los libros →</a></div>
+      <div class="shelf">
+        {libros.map((l) => (
+          <a href={`/libros/${l.id}/`}>
+            <Portada libro={l} ancho={180} />
+            <div class="t">{l.data.titulo}</div>
+            <div class="y">{l.data.año} · {l.data.editorial}</div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>

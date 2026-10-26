@@ -1,0 +1,19 @@
+---
+titulo: Conferencia de clausura de la Feria del Libro de Alicante 2020 por Begoña Valero
+fecha: 2020-11-01
+tipo: prensa
+libros:
+  - la-casa-del-compas-de-oro
+etiquetas:
+  - clausura
+  - feria
+  - libro
+---
+
+<br>
+<p>Bajo el título "Nuestros Héroes: Christophe Plantin", Begoña Valero clausura la Feria del Libro de Alicante 2020 con una conferencia destinada a desnudar la personalidad del protagonista de su novela LA CASA DEL COMPÁS DE ORO en el 500 aniversario de su nacimiento (1520 - 1589).
+<p/>
+<div class="embed-responsive embed-responsive-16by9">
+<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/zGhz9ZYEP50" frameborder="0" allowfullscreen>
+</iframe>
+</div>

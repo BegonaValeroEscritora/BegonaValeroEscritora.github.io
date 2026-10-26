@@ -1,0 +1,14 @@
+---
+titulo: Begoña Valero entrevistada en la revista HOLA nos presenta Un testigo llamado Cervantes, el autor del Quijote sigue siendo un gran desconocido
+subtitulo: La autora narra una intensa historia basada en hechos reales y en dos escenarios, Valencia y Argel, en torno a 1580.
+fecha: 2024-06-07
+tipo: prensa
+libros:
+  - un-testigo-llamado-cervantes
+portada: ./01.jpg
+---
+
+<p>La revista HOLA se hace eco del extraordinario artículo que el periodista y escritor Daniel Arveras ha publicado sobre la novela "Un testigo llamado Cervantes", en la que se puede ver una foto en exclusiva del director de cine Alejandro Amenábar, que rodaba “El cautivo” en Bocairent, con Begoña Valero que presentaba su novela. Quizás, lo más destacable de la foto es que Amenábar lleva en las manos un ejemplar de "Un testigo llamado Cervantes". Ejemplar por el que mostró mucho interés, ya que tanto la película como la novela reflejan los cinco años que nuestro escritor más universal estuvo cautivo en Argel. 
+
+<p><a href="https://www.hola.com/actualidad/20240607255152/begona-valero-entrevista-libro-un-testigo-de-cervantes/">Leer arículo en HOLA.com</a></p>     
+</p>

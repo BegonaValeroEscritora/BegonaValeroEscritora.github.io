@@ -1,0 +1,18 @@
+---
+titulo: La revista literaria, Y Latina, en su número de junio entrevista a Begoña Valero y reseña su novela LA CASA DEL COMPÁS DE ORO
+fecha: 2020-06-01
+tipo: prensa
+libros:
+  - la-casa-del-compas-de-oro
+etiquetas:
+  - revista
+  - ylatina
+---
+
+<br>
+
+<p>Puede encontrar la entrevista en el siguiente enlace, en las páginas 14 a 16. Además, encontrará la reseña de Ramón Villa en página 30.
+<p/>
+<p>
+Publicación: <a href="https://issuu.com/aenoveles/docs/y_latina_junio_2020?fbclid=IwAR2e6hs564FZw7e2yeAn4J1Crn0q70EP6YgyL1SxZeaFU4y4tULWXiKPUWs">Enlace</a>
+<p/>

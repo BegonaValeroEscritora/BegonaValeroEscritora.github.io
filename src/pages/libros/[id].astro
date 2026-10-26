@@ -1,0 +1,90 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Portada from '../../components/Portada.astro';
+import Compartir from '../../components/Compartir.astro';
+import Eventos from '../../components/Eventos.astro';
+import TarjetaNoticia from '../../components/TarjetaNoticia.astro';
+import Vecinos from '../../components/Vecinos.astro';
+import { agenda, libros, noticias, type Libro } from '../../lib/contenido';
+
+export const getStaticPaths = (async () => {
+  const todos = await libros();
+  const estante = todos.filter((l) => !l.data.otraObra);
+  return todos.map((libro) => {
+    const i = estante.findIndex((l) => l.id === libro.id);
+    return { params: { id: libro.id }, props: { libro, posterior: i > 0 ? estante[i - 1] : undefined, previo: i >= 0 ? estante[i + 1] : undefined } };
+  });
+}) satisfies GetStaticPaths;
+
+const { libro, posterior, previo } = Astro.props as { libro: Libro; posterior?: Libro; previo?: Libro };
+const vecino = (l?: Libro, etiqueta = '') => l && { href: `/libros/${l.id}/`, titulo: l.data.titulo, etiqueta, img: l.data.portada };
+const d = libro.data;
+const { Content } = await render(libro);
+const sobreEste = (await noticias()).filter((n) => n.data.libros.some((r) => r.id === libro.id));
+const premios = (await getCollection('premios')).filter((p) => p.data.libro.id === libro.id);
+const { proximos } = await agenda();
+const eventos = proximos.filter((e) => e.data.libros.some((r) => r.id === libro.id));
+
+const jsonld = {
+  '@context': 'https://schema.org',
+  '@type': 'Book',
+  name: d.titulo,
+  author: { '@type': 'Person', name: 'Begoña Valero' },
+  publisher: d.editorial,
+  datePublished: d.año ? String(d.año) : undefined,
+  isbn: d.ficha.ISBN,
+  award: premios.map((p) => `${p.data.nombre} ${p.data.año}`),
+};
+---
+<Base titulo={d.titulo} descripcion={d.resumen} imagen={d.portada} tipo="book" jsonld={jsonld}>
+  <div class="wrap">
+    <article class="book" data-pagefind-body>
+      <div class="cover-col">{d.portada && <Portada libro={libro} ancho={420} eager />}</div>
+      <div>
+        <div class="eyebrow">{[d.genero, [d.editorial, d.año].filter(Boolean).join(', ')].filter(Boolean).join(' · ')}</div>
+        <h1>{d.titulo}</h1>
+        {premios.length > 0 && <div class="badges">{premios.map((p) => <a class="badge" href={`/noticias/${p.data.noticia.id}/`}>{p.data.nombre} {p.data.año}</a>)}</div>}
+        {d.premios_texto && <div class="badges"><span class="badge">{d.premios_texto}</span></div>}
+        {d.agotado && <p class="notice">Este libro se encuentra actualmente agotado.</p>}
+        <div class="prose" style="margin-top: 28px"><Content /></div>
+        {d.citas.map((c) => (
+          <blockquote>
+            <p>«{c.texto}»</p>
+            {c.autor && <cite><b>{c.autor}</b>{c.cargo && <> · {c.cargo}</>}</cite>}
+          </blockquote>
+        ))}
+        {d.compra.length > 0 ? (
+          <div class="actions">
+            {d.compra.map((c, i) => <a class:list={['btn', i === 0 ? 'primary' : 'ghost']} href={c.url}>{i === 0 ? `Comprar en ${c.texto}` : c.texto}</a>)}
+          </div>
+        ) : !d.otraObra && (
+          <div class="actions"><span class="btn disabled" aria-disabled="true">{d.agotado ? 'Agotado' : 'No disponible en librerías'}</span></div>
+        )}
+        {Object.keys(d.ficha).length > 0 && (
+          <dl class="ficha">{Object.entries(d.ficha).map(([k, v]) => <><dt>{k}</dt><dd>{v}</dd></>)}</dl>
+        )}
+        <Compartir titulo={d.titulo} />
+      </div>
+    </article>
+
+    {eventos.length > 0 && (
+      <section class="block tight">
+        <div class="section-head"><h2>Próximos eventos con este libro</h2><a class="more" href="/agenda/">Toda la agenda →</a></div>
+        <Eventos eventos={eventos} max={5} />
+      </section>
+    )}
+
+    {sobreEste.length > 0 && (
+      <section class="block tight">
+        <div class="section-head">
+          <h2>En prensa y presentaciones</h2>
+          <a class="more" href={`/noticias/${libro.id}/`}>{sobreEste.length === 1 ? 'Ver la noticia' : `Las ${sobreEste.length} noticias sobre este libro`} →</a>
+        </div>
+        <div class="cards">{sobreEste.slice(0, 3).map((n) => <TarjetaNoticia noticia={n} />)}</div>
+      </section>
+    )}
+    <Vecinos anterior={vecino(posterior, 'Libro más reciente')} siguiente={vecino(previo, 'Libro anterior')} listado={{ href: '/libros/', texto: 'Todos los libros' }} portadas />
+  </div>
+</Base>

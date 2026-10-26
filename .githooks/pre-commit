@@ -1,0 +1,3 @@
+#!/bin/sh
+# Optimiza las fotos añadidas al commit antes de que entren en git.
+exec node scripts/fotos.mjs --staged

@@ -1,0 +1,16 @@
+---
+import type { GetStaticPaths } from 'astro';
+import Base from '../../layouts/Base.astro';
+import ListaNoticias from '../../components/ListaNoticias.astro';
+import { noticias } from '../../lib/contenido';
+import { SITE } from '../../config';
+
+export const getStaticPaths = (async ({ paginate }) => {
+  return paginate(await noticias(), { pageSize: SITE.noticiasPorPagina });
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+---
+<Base titulo={page.currentPage > 1 ? `Noticias (página ${page.currentPage})` : 'Noticias'} descripcion="Prensa, presentaciones y premios de Begoña Valero.">
+  <ListaNoticias page={page} titulo="Noticias" />
+</Base>

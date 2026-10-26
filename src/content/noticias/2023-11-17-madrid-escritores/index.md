@@ -1,0 +1,24 @@
+---
+titulo: Begoña Valero en el inicio de actividad de la Agrupación "Benito Pérez Galdós" en el Ateneo de Madrid
+fecha: 2023-11-17
+tipo: prensa
+libros:
+  - la-casa-del-compas-de-oro
+portada: ./01.jpg
+etiquetas:
+  - ateneo madrid
+---
+
+<br>
+
+<p>La Asociación Escritores con la Historia ha organizado un coloquio entre sus escritores más
+jóvenes o que llevan menos tiempo escribiendo novela histórica en el Ateneo de Madrid, de la
+mano de la Agrupación Ateneística de Novela e Historia "Benito Pérez Galdós". Este ha sido el
+primer acto de la Agrupación. Autores de la talla de Juan Eslava Galán, Isabel San Sebastián,
+Santiago Posteguillo, Antonio Pérez Henares, Almudena Arteaga, Luz Gabás, José Calvo Poyato,
+Javier Sierra, Jorge Molist y muchos otros, comparten protagonismo con otras voces que
+vienen pisando con fuerza: Sandra Aza, César Cervera, Olga Luján, Begoña Valero, Daniel
+Arveras, José Manuel Salas, José Zoilo, José Luis Gil, Alicia Vallina, Nieves Michavila, David
+Gómez, María Reig y Yeyo Balbás y María Vila entre otros.</p>
+
+Más información: <a href="https://www.zendalibros.com/inicio-de-actividad-de-la-agrupacion-benito-perez-galdos/">www.zendalibros.com</a>

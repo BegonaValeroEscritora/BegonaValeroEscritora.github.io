@@ -1,0 +1,23 @@
+---
+import { Image } from 'astro:assets';
+import type { Libro } from '../lib/contenido';
+
+interface Props { libro: Libro; ancho?: number; class?: string; eager?: boolean; }
+const { libro, ancho = 240, class: clase = '', eager = false } = Astro.props;
+const src = libro.data.portada;
+// Las «otras obras» (p. ej. un cortometraje) no son cubiertas de libro: se muestran sin recortar.
+const natural = libro.data.otraObra;
+---
+{src ? (
+  <Image
+    src={src}
+    alt={`Cubierta de ${libro.data.titulo}`}
+    widths={[ancho, ancho * 2].filter((w) => w <= src.width)}
+    sizes={`${ancho}px`}
+    class:list={['cover', { natural }, clase]}
+    loading={eager ? 'eager' : 'lazy'}
+    fetchpriority={eager ? 'high' : undefined}
+  />
+) : (
+  <div class:list={['cover', clase]} />
+)}

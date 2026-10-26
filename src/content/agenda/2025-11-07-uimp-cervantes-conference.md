@@ -1,0 +1,8 @@
+---
+titulo: IX Jornadas de Novela Histórica UIMP - Conferencia sobre Cervantes
+fecha: 2025-11-07
+---
+
+<p>
+Viernes 7 de noviembre Begoña Valero ofrecerá una conferencia sobre Cervantes en IX JORNADAS de Novela Histórica en la UIMP (Universidad Internacional Menéndez Pelayo de La Línea de la Concepción).
+</p>

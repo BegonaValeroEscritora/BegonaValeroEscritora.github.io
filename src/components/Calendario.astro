@@ -1,0 +1,80 @@
+---
+import type { Evento } from '../lib/contenido';
+import { iso } from '../lib/fechas';
+
+interface Props { eventos: Evento[]; }
+const datos = Astro.props.eventos
+  .map((e) => ({ f: iso(e.data.fecha), t: e.data.titulo, u: `/agenda/${e.id}/` }))
+  .sort((a, b) => a.f.localeCompare(b.f));
+---
+<div class="calendar" data-calendario data-eventos={JSON.stringify(datos)} hidden>
+  <div class="cal-head">
+    <button type="button" data-mover="-1" aria-label="Mes anterior">‹</button>
+    <h3 aria-live="polite"></h3>
+    <button type="button" data-mover="1" aria-label="Mes siguiente">›</button>
+  </div>
+  <div class="cal-grid" role="grid"></div>
+  <ul class="cal-list"></ul>
+  <button type="button" class="cal-today" data-hoy>Volver a hoy</button>
+</div>
+
+<script>
+  // Calendario mensual de la agenda (solo con JavaScript; sin él se ve la lista normal).
+  const raiz = document.querySelector<HTMLElement>('[data-calendario]');
+  if (raiz) {
+    type E = { f: string; t: string; u: string };
+    const eventos: E[] = JSON.parse(raiz.dataset.eventos!);
+    const hoy = new Date().toLocaleDateString('en-CA');
+    const titulo = raiz.querySelector('h3')!;
+    const grid = raiz.querySelector('.cal-grid')!;
+    const lista = raiz.querySelector('.cal-list')!;
+    const mesFmt = new Intl.DateTimeFormat('es-ES', { month: 'long', year: 'numeric', timeZone: 'UTC' });
+    const diaFmt = new Intl.DateTimeFormat('es-ES', { day: 'numeric', month: 'long', timeZone: 'UTC' });
+    let año = Number(hoy.slice(0, 4));
+    let mes = Number(hoy.slice(5, 7)) - 1;
+    let seleccion: string | null = null;
+    const pad = (n: number) => String(n).padStart(2, '0');
+    const enlace = (e: E) =>
+      `<li class="${e.f < hoy ? 'pasado' : ''}"><time>${diaFmt.format(new Date(e.f + 'T00:00:00Z'))}</time><a href="${e.u}">${e.t.replace(/</g, '&lt;')}</a></li>`;
+
+    function pintar() {
+      const prefijo = `${año}-${pad(mes + 1)}`;
+      const m = mesFmt.format(Date.UTC(año, mes, 1));
+      titulo.textContent = m[0].toUpperCase() + m.slice(1);
+      const delMes = eventos.filter((e) => e.f.startsWith(prefijo));
+      const hueco = (new Date(Date.UTC(año, mes, 1)).getUTCDay() + 6) % 7; // semanas empiezan en lunes
+      const dias = new Date(Date.UTC(año, mes + 1, 0)).getUTCDate();
+      let html = ['L', 'M', 'X', 'J', 'V', 'S', 'D'].map((d) => `<span class="dow">${d}</span>`).join('');
+      html += '<span></span>'.repeat(hueco);
+      for (let d = 1; d <= dias; d++) {
+        const f = `${prefijo}-${pad(d)}`;
+        const n = delMes.filter((e) => e.f === f).length;
+        const cls = [f === hoy && 'hoy', n && (f < hoy ? 'con pasado' : 'con'), f === seleccion && 'sel'].filter(Boolean).join(' ');
+        html += n
+          ? `<button type="button" class="${cls}" data-dia="${f}" aria-label="${d}: ${n} evento(s)">${d}</button>`
+          : `<span class="${cls}">${d}</span>`;
+      }
+      grid.innerHTML = html;
+      const visibles = seleccion?.startsWith(prefijo) ? delMes.filter((e) => e.f === seleccion) : delMes;
+      lista.innerHTML = visibles.length ? visibles.map(enlace).join('') : '<li class="vacio">Sin eventos este mes.</li>';
+    }
+
+    raiz.addEventListener('click', (ev) => {
+      const b = (ev.target as HTMLElement).closest('button');
+      if (!b) return;
+      if (b.dataset.mover) {
+        mes += Number(b.dataset.mover);
+        if (mes < 0) { mes = 11; año--; }
+        if (mes > 11) { mes = 0; año++; }
+        seleccion = null;
+      } else if (b.dataset.dia) {
+        seleccion = seleccion === b.dataset.dia ? null : b.dataset.dia;
+      } else if (b.dataset.hoy !== undefined) {
+        año = Number(hoy.slice(0, 4)); mes = Number(hoy.slice(5, 7)) - 1; seleccion = null;
+      }
+      pintar();
+    });
+    raiz.hidden = false;
+    pintar();
+  }
+</script>

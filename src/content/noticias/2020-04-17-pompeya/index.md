@@ -1,0 +1,17 @@
+---
+titulo: Viajeros por el Mediterráneo con Begoña Valero
+fecha: 2020-04-17
+tipo: prensa
+libros:
+  - la-casa-del-compas-de-oro
+etiquetas:
+  - mediterraneo
+---
+
+<br>
+<p>Casa Mediterráneo, institución gubernamental del Ministerio de Asuntos Exteriores español, ha preparado una nueva sesión de #ViajerosPorElMediterráneo en la que la escritora de novela histórica Begoña Valero narra un viaje a Pompeya.
+<p/>
+<div class="embed-responsive embed-responsive-16by9">
+<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/UxWJg_P4KMA" frameborder="0" allowfullscreen>
+</iframe>
+</div>

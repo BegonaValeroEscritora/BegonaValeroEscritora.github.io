@@ -1,0 +1,9 @@
+---
+titulo: Feria del Libro de Valencia - Firma de ejemplares
+fecha: 2026-05-07
+---
+
+<p>Jueves 7 de mayo, firma de libros en la Feria del Libro de Valencia:</p>
+<ul>
+<li>17:00-20:30 CASETA RAILOWSKY (Nº 62-63)</li>
+</ul>

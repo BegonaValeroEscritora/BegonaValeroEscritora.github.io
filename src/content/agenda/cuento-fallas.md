@@ -1,0 +1,11 @@
+---
+titulo: Presentación de Un cuento mágico sobre las Fallas
+fecha: 2025-02-20
+libros:
+  - un-cuento-magico-sobre-las-fallas
+---
+
+<p>
+Presentación de "Un cuento mágico sobre las Fallas" en Ámbito Cultural de El Corte Inglés de Colón en Valencia a las 19h.
+Más información en <a href="https://www.elcorteingles.es/centroscomerciales/es/eci/centros/centro-comercial-pintor-sorolla-colon/eventos/presentacion-un-cuento-magico-sobre-las-fallas-de-begona-valero-y-martin-fores">la web de El Corte Inglés</a>.
+</p>

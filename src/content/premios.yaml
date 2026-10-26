@@ -1,0 +1,19 @@
+# Premios que aparecen en la portada (ordenados por la fecha de la noticia). Cada premio enlaza a su noticia.
+- id: critica-valenciana-2025
+  nombre: Premio de la Crítica Literaria Valenciana
+  año: 2025
+  detalle: Narrativa
+  libro: un-testigo-llamado-cervantes
+  noticia: 2025-10-25-premio-critica-valenciana-entrega
+- id: odilo-2024
+  nombre: Premio ODILO
+  año: 2024
+  detalle: Mejor autora de novela histórica
+  libro: un-testigo-llamado-cervantes
+  noticia: 2024-10-05-odilo
+- id: letras-mediterraneo-2024
+  nombre: Galardón Letras del Mediterráneo
+  año: 2024
+  detalle: Novela histórica
+  libro: la-venganza-de-los-templarios
+  noticia: 2024-10-24-letras

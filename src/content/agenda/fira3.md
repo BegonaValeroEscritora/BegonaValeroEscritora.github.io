@@ -1,0 +1,12 @@
+---
+titulo: Fira del Llibre 2018 Caseta de Librería Soriano
+fecha: 2018-05-01
+libros:
+  - la-casa-del-compas-de-oro
+---
+
+<p>Os espero en la 53ª edición de la Fira del Llibre de València en el paseo de los Jardines de Viveros donde estaré firmando ejemplares de mi novela: LA CASA DEL COMPÁS DE ORO</p>
+<p><b> Martes, 1 de mayo de 17 a 21h. en la caseta de Librería Soriano </b></p>
+
+<p><b>Fira del llibre: </b><a href="http://firallibre.com/"> 
+Enlace</a></p>

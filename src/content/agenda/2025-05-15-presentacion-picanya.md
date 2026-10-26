@@ -1,0 +1,9 @@
+---
+titulo: Presentación de Un cuento mágico sobre las Fallas en el Ateneo de Picanya
+fecha: 2025-05-15
+libros:
+  - un-cuento-magico-sobre-las-fallas
+---
+
+<p>Presentación en Picanya de "Un cuento mágico sobre las Fallas" de Begoña Valero, ilustrado por Martín Forés y la colaboración de Paco Roca en la contraportada.</p>
+<p>Tendrá lugar en el Ateneo de Picanya el próximo jueves 15 de mayo a las 19.00 horas.</p>

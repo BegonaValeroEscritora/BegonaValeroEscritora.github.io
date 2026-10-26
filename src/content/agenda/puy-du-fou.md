@@ -1,0 +1,13 @@
+---
+titulo: Feria del Libro Histórico en Puy du Fou España
+fecha: 2025-03-15
+libros:
+  - un-testigo-llamado-cervantes
+---
+
+<p>
+Firma de ejemplares de "Un testigo llamado Cervantes" en la Feria del Libro Histórico de Puy du Fou España (Toledo). Begoña Valero estará en la caseta de editorial Sargantana en dos horarios: de 13:00 a 15:00 y de 17:00 a 19:00 horas.
+</p>
+<p>
+<a href="https://puydufouespana.com/espana/es/feria-libro-historico" target="_blank">Más información sobre la Feria del Libro Histórico</a>
+</p>

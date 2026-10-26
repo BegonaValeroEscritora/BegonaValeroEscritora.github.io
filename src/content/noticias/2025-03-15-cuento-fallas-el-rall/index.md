@@ -1,0 +1,14 @@
+---
+titulo: Begoña Valero nos cuenta en El Rall de À Punt los valores que trasmite "Un cuento mágico sobre las Fallas"
+subtitulo: La autora de "Un cuento mágico sobre las Fallas" y el ilustrador, Martín Forés, hablan para À Punt en el programa El Rall
+fecha: 2025-03-15
+tipo: prensa
+libros:
+  - un-cuento-magico-sobre-las-fallas
+---
+
+<p>"Un cuento mágico sobre las Fallas" despierta la curiosidad de los lectores por la entrañable historia que ha creado Begoña Valero sobre el mundo de las fallas y por las innovadoras ilustraciones de Martín Forés.</p>
+
+<p><a href="https://www.apuntmedia.es/programes/el-rall/15-03-2025-rall_135_1772741.html" target="_blank">Escucha la entrevista en À Punt</a></p>
+
+<p>La entrevista comienza en el minuto 55:30</p>

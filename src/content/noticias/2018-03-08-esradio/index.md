@@ -1,0 +1,28 @@
+---
+titulo: La casa del Compás de Oro EN CASA DE HERRERO
+fecha: 2018-03-08
+tipo: prensa
+libros:
+  - la-casa-del-compas-de-oro
+portada: ./01.png
+etiquetas:
+  - radio esradio fernando sanchez drago
+---
+
+<br>
+
+<p>
+<b>Fernando Sánchez Dragó</b> habla de la novela LA CASA DEL COMPÁS DE ORO de Begoña Valero editada por Grijalbo en el programa radiofónico de Luis Herrero “Tertulia de Sabios: El papel de la mujer en la literatura” Ambos analizan junto a Luis Alberto de Cuenca las grandes obras de la literatura escritas por mujeres. 
+</p>
+<p>Haz click en <i>Seguir leyendo</i> para escuchar el audio.</p>
+
+<p>
+En el minuto 16:50 se nombra LA CASA DEL COMPÁS DE ORO.<br>
+Se puede escuchar el audio sobre la novela desde el minuto 31:40 hasta el 36:50 y, después, a partir del minuto 44
+</p>
+
+<div>
+<audio controls="controls" style="width:100%; height:50px">
+<source id="sourceVid" type="audio/mpeg" src="/media/esradio.mp3">
+</audio>
+</div>

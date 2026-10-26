@@ -1,0 +1,24 @@
+---
+titulo: Begoña Valero nuevo miembro de la Asociación de Escritores con la Historia
+fecha: 2022-06-30
+tipo: presentacion
+libros:
+  - la-casa-del-compas-de-oro
+etiquetas:
+  - medios
+---
+
+<br>
+
+<p>
+<a href="http://www.escritoresconlahistoria.es/autores/begona-valero/">Escritores con la Historia</a> es una asociación a la que pertenece una extensa
+selección de los mejores escritores de novela histórica que escriben en español. Entre
+ellos, su presidente Antonio Pérez Henares, Santiago Posteguillo, Luz Gabás, Isabel
+San Sebastián, Javier Sierra, Juan Eslava Galán, Almudena de Arteaga y un largo
+etcétera de excelentes profesionales de la escritura interesados en dar a conocer la
+Historia de España a través de la literatura desde el rigor y el conocimiento.
+Desde ahora también Begoña Valero pasa a forma parte de este privilegiado grupo de
+escritores que pretenden difundir la Historia a través de la literatura.
+<p>
+Escritores con la Historia: <a href="http://www.escritoresconlahistoria.es/autores/">Todos los autores</a>
+</p>

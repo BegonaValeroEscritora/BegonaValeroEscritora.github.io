@@ -1,0 +1,55 @@
+name: Publicar web
+
+on:
+  push:
+    branches: [master]
+  # Reconstrucción diaria para que la agenda y la portada no se queden desfasadas.
+  schedule:
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+  actions: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      # Guarda las imágenes ya procesadas entre ejecuciones para que la build tarde segundos.
+      - uses: actions/cache@v4
+        with:
+          path: node_modules/.astro
+          key: astro-${{ hashFiles('src/content/**', 'src/assets/**') }}
+          restore-keys: astro-
+      - run: npm run build
+        env:
+          TZ: Europe/Madrid
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+      # GitHub desactiva los cron tras 60 días sin actividad en el repo; esto lo evita.
+      - uses: liskin/gh-workflow-keepalive@v1
+        if: github.event_name == 'schedule'
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

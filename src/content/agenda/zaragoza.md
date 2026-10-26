@@ -1,0 +1,14 @@
+---
+titulo: Club de lectura de El Corte Inglés de ZARAGOZA
+fecha: 2018-05-31
+libros:
+  - la-casa-del-compas-de-oro
+---
+
+<p>
+En el Club de lectura de El Corte Inglés de ZARAGOZA a las 19:30h, Begoña Valero hablará sobre LA CASA DEL COMPÁS DE ORO con las personas que deseen conocer a fondo los entresijos de esta novela.
+</p>
+<p><b>Enlace: </b><a href="http://ambitocultural.es/eventos/club-de-lectura-la-casa-del-compas-de-oro-de-begona-valero/" >Club de Lectura de Zaragoza</a></p>
+<h4>Mapa:</h4>
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3444.3133530720593!2d-0.8824249519716487!3d41.65187192402436!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd5914eedaa3169d%3A0xa3f98ccd27cacd59!2sPaseo+de+la+Independencia%2C+11%2C+50001+Zaragoza!5e0!3m2!1sen!2ses!4v1526418084437"
+frameborder="0" style="border:0;overflow: hidden; height: 300px; width: 100%; " allowfullscreen></iframe>

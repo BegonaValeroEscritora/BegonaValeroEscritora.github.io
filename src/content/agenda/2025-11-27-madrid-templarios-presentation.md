@@ -1,0 +1,10 @@
+---
+titulo: Presentación "La venganza de los templarios" en Madrid
+fecha: 2025-11-27
+libros:
+  - la-venganza-de-los-templarios
+---
+
+<p>
+Jueves 27 de noviembre a las 19:00 h. presentación de Begoña Valero en el Auditorio de la Biblioteca Eugenio Trías (Casa de las Fieras) del Retiro de Madrid de la novela "La venganza de los templarios".
+</p>

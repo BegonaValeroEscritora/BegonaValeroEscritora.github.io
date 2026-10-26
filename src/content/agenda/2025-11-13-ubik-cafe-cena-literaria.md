@@ -1,0 +1,6 @@
+---
+titulo: Cena Literaria en Ubik café Ruzafa
+fecha: 2025-11-13
+---
+
+<p>Jueves 13 de noviembre a las 21:00 h, Cena Literaria en Ubik café, calle Literato Azorín 13 de Ruzafa en Valencia.</p>

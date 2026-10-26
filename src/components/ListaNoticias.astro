@@ -1,0 +1,36 @@
+---
+import type { Page } from 'astro';
+import { TIPOS, años, libros as getLibros, noticias as getNoticias, type Noticia } from '../lib/contenido';
+import FilaNoticia from './FilaNoticia.astro';
+import Paginacion from './Paginacion.astro';
+
+interface Props { page: Page<Noticia>; filtro?: string; titulo: string; }
+const { page, filtro, titulo } = Astro.props;
+const todas = await getNoticias();
+const libros = (await getLibros()).filter((l) => todas.some((n) => n.data.libros.some((r) => r.id === l.id)));
+const chips = [
+  { ruta: '', texto: 'Todas', n: todas.length },
+  ...Object.entries(TIPOS).map(([k, t]) => ({ ruta: t.ruta, texto: t.plural, n: todas.filter((n) => n.data.tipo === k).length })),
+];
+const base = filtro ? `/noticias/${filtro}` : '/noticias';
+const actual = (ruta: string) => ((filtro ?? '') === ruta ? 'page' : undefined);
+---
+<div class="wrap">
+  <div class="page-head">
+    <div class="eyebrow">Archivo · {todas.length} entradas desde {todas.at(-1)?.data.fecha.getUTCFullYear()}</div>
+    <h1>{titulo}</h1>
+  </div>
+  <nav class="filters" aria-label="Filtrar por tipo">
+    {chips.map((c) => <a class="chip" href={c.ruta ? `/noticias/${c.ruta}/` : '/noticias/'} aria-current={actual(c.ruta)}>{c.texto}<span class="n">{c.n}</span></a>)}
+  </nav>
+  <nav class="filters compact" aria-label="Filtrar por libro">
+    {libros.map((l) => <a class="chip" href={`/noticias/${l.id}/`} aria-current={actual(l.id)}><i>{l.data.titulo}</i></a>)}
+  </nav>
+  <nav class="filters compact" aria-label="Filtrar por año">
+    {años(todas).map((a) => <a class="chip" href={`/noticias/${a}/`} aria-current={actual(String(a))}>{a}</a>)}
+  </nav>
+  <div class="list">
+    {page.data.map((n) => <FilaNoticia noticia={n} />)}
+  </div>
+  <Paginacion page={page} base={base} />
+</div>

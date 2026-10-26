@@ -1,0 +1,8 @@
+---
+titulo: Club de lectura Torrent Histórica en la Casa de Cultura de Torrent
+fecha: 2026-09-29
+libros:
+  - la-venganza-de-los-templarios
+---
+
+<p>Begoña Valero participa en el Club de lectura Torrent Histórica en la Casa de Cultura de Torrent (Valencia) a las 19:30 h con su novela "La venganza de los templarios".</p>

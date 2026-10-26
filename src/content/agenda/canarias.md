@@ -1,0 +1,14 @@
+---
+titulo: Presentación de La casa del Compás de Oro en Las Palmas de Gran Canaria
+fecha: 2020-06-04
+libros:
+  - la-casa-del-compas-de-oro
+imagen: ./canarias/01.png
+---
+
+<div class="alert alert-warning" role="alert">A consencuencia del COVID-19, el acto queda pospuesto hasta nuevo aviso.</div>
+<p>
+Las Palmas de Gran Canaria (Casa de Colón) es el incomparable lugar donde Begoña Valero presentará LA CASA DEL COMPÁS DE ORO, en la celebración del 500 aniversario de Christophe Plantin, el protagonista de su novela.
+</p>
+<p>
+<a href="http://www.casadecolon.com/">Casa de Colón</a></p>
