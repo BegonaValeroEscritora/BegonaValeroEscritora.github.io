@@ -67,6 +67,21 @@ const jsonld = {
   </div>
 
   <section class="block">
+    <div class="wrap">
+      <div class="section-head"><h2>Libros</h2><a class="more" href="/libros/">Todos los libros →</a></div>
+      <div class="shelf">
+        {libros.map((l) => (
+          <a href={`/libros/${l.id}/`}>
+            <Portada libro={l} ancho={180} />
+            <div class="t">{l.data.titulo}</div>
+            <div class="y">{l.data.año} · {l.data.editorial}</div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="block tight">
     <div class="wrap two">
       <div>
         <div class="section-head"><h2>Próximos eventos</h2><a class="more" href="/agenda/">Toda la agenda →</a></div>
@@ -85,21 +100,6 @@ const jsonld = {
     <div class="wrap">
       <div class="section-head"><h2>Últimas noticias</h2><a class="more" href="/noticias/">Ver todas →</a></div>
       <div class="cards">{noticias.map((n) => <TarjetaNoticia noticia={n} />)}</div>
-    </div>
-  </section>
-
-  <section class="block tight">
-    <div class="wrap">
-      <div class="section-head"><h2>Libros</h2><a class="more" href="/libros/">Todos los libros →</a></div>
-      <div class="shelf">
-        {libros.map((l) => (
-          <a href={`/libros/${l.id}/`}>
-            <Portada libro={l} ancho={180} />
-            <div class="t">{l.data.titulo}</div>
-            <div class="y">{l.data.año} · {l.data.editorial}</div>
-          </a>
-        ))}
-      </div>
     </div>
   </section>
 </Base>
