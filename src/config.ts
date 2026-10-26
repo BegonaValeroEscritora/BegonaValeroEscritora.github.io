@@ -3,6 +3,7 @@ export const SITE = {
   descripcion: 'Web de Begoña Valero, escritora de novela histórica: libros, noticias y agenda de presentaciones.',
   email: 'begonavaleroescritora@gmail.com',
   facebook: 'https://www.facebook.com/begona.valeroblazquez',
+  instagram: 'https://www.instagram.com/begona_valero/',
   // Código de GoatCounter (https://<código>.goatcounter.com). Vacío = sin analítica.
   goatcounter: 'begonavalero',
   creditos: {
