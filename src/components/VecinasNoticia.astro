@@ -1,0 +1,28 @@
+---
+// Noticia más reciente / anterior como tarjetas grandes con foto, al estilo de las tarjetas de noticias.
+import { Image } from 'astro:assets';
+import { TIPOS, imagenDe, type Noticia } from '../lib/contenido';
+import { fechaCorta, iso } from '../lib/fechas';
+
+interface Props { posterior?: Noticia; previa?: Noticia; }
+const { posterior, previa } = Astro.props;
+const tarjeta = async (n: Noticia | undefined, etiqueta: string) => n && { n, etiqueta, imagen: await imagenDe(n) };
+const items = [await tarjeta(posterior, '← Noticia más reciente'), await tarjeta(previa, 'Noticia anterior →')];
+---
+<section class="block tight">
+  <div class="section-head"><h2>Seguir leyendo</h2><a class="more" href="/noticias/">Todas las noticias →</a></div>
+  <nav class="vecinas" aria-label="Noticias anterior y siguiente">
+    {items.map((it, i) => it ? (
+      <a class="vecina" href={`/noticias/${it.n.id}/`} rel={i === 0 ? 'prev' : 'next'}>
+        <div class:list={['ph', { libro: it.imagen?.deLibro }]}>
+          {it.imagen && <Image src={it.imagen.img} alt="" widths={[300, 600].filter((w) => w <= it.imagen!.img.width)} sizes="(max-width: 700px) 100vw, 240px" />}
+        </div>
+        <div>
+          <div class="dir">{it.etiqueta}</div>
+          <div class="tagline"><span class="tag">{TIPOS[it.n.data.tipo].etiqueta}</span><time datetime={iso(it.n.data.fecha)}>{fechaCorta(it.n.data.fecha)}</time></div>
+          <h3>{it.n.data.titulo}</h3>
+        </div>
+      </a>
+    ) : <span />)}
+  </nav>
+</section>

@@ -349,3 +349,17 @@ footer.site-footer a:hover { color: #fff; }
   .vecinos { grid-template-columns: 1fr 1fr; }
   .vecinos .listado { grid-column: 1 / -1; grid-row: 2; justify-self: center; }
 }
+
+/* Noticia más reciente / anterior */
+.vecinas { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+.vecina { display: grid; grid-template-columns: 220px 1fr; gap: 20px; align-items: center; text-decoration: none; padding: 16px; border: 1px solid var(--rule); border-radius: 14px; background: var(--card); transition: border-color .15s; }
+.vecina:hover { border-color: var(--ink); }
+.vecina:hover h3 { color: var(--accent); }
+.vecina:hover .ph img { transform: scale(1.04); }
+.vecina .dir { font-family: var(--sans); font-size: 13px; font-weight: 600; color: var(--muted); letter-spacing: .02em; }
+.vecina .tagline { margin: 6px 0; }
+.vecina h3 { font-family: var(--serif); font-size: 20px; font-weight: 600; line-height: 1.35; }
+@media (max-width: 900px) {
+  .vecinas { grid-template-columns: 1fr; gap: 16px; }
+}
+@media (max-width: 560px) { .vecina { grid-template-columns: 120px 1fr; gap: 14px; padding: 12px; } .vecina h3 { font-size: 17px; } }

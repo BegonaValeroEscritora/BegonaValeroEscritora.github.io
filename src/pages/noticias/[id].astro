@@ -6,7 +6,7 @@ import Base from '../../layouts/Base.astro';
 import Galeria from '../../components/Galeria.astro';
 import Compartir from '../../components/Compartir.astro';
 import TarjetaNoticia from '../../components/TarjetaNoticia.astro';
-import Vecinos from '../../components/Vecinos.astro';
+import VecinasNoticia from '../../components/VecinasNoticia.astro';
 import { TIPOS, extracto, fotosDe, imagenDe, noticias, portadaDe, type Noticia } from '../../lib/contenido';
 import { fechaLarga, iso } from '../../lib/fechas';
 
@@ -19,7 +19,6 @@ export const getStaticPaths = (async () => {
 }) satisfies GetStaticPaths;
 
 const { noticia, relacionadas, posterior, previa } = Astro.props as { noticia: Noticia; relacionadas: Noticia[]; posterior?: Noticia; previa?: Noticia };
-const vecina = (n?: Noticia, etiqueta = '') => n && { href: `/noticias/${n.id}/`, titulo: n.data.titulo, etiqueta };
 const { Content } = await render(noticia);
 const portada = portadaDe(noticia)?.img;
 const fotos = fotosDe(noticia.id).filter((f) => f.archivo !== portadaDe(noticia)?.archivo).map((f) => f.img);
@@ -47,8 +46,8 @@ const compartir = (await imagenDe(noticia))?.img;
       <div class="prose"><Content /></div>
       <Galeria fotos={fotos} titulo={noticia.data.titulo} />
       <Compartir titulo={noticia.data.titulo} />
-      <Vecinos anterior={vecina(posterior, 'Noticia más reciente')} siguiente={vecina(previa, 'Noticia anterior')} listado={{ href: '/noticias/', texto: 'Todas las noticias' }} />
     </article>
+    <VecinasNoticia posterior={posterior} previa={previa} />
     {relacionadas.length > 0 && (
       <section class="block tight">
         <div class="section-head"><h2>Más noticias sobre {libros[0].data.titulo}</h2><a class="more" href={`/noticias/${libros[0].id}/`}>Ver todas →</a></div>
