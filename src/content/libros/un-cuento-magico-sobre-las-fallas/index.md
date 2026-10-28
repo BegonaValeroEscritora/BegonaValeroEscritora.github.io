@@ -16,6 +16,8 @@ ficha:
   Formato: 17x24, rústica con solapas
   Precio: 14,90 €
 compra:
+  - texto: Amazon
+    url: https://www.amazon.es/dp/8410046563
   - texto: todostuslibros.com
     url: https://www.todostuslibros.com/libros/un-cuento-magico-sobre-las-fallas_978-84-10046-56-6
 ---

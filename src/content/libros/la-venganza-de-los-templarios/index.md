@@ -4,7 +4,6 @@ genero: Novela histórica
 editorial: Sargantana
 año: 2025
 orden: 6
-destacado: true
 portada: ./portada.jpg
 resumen: París, 1307. Dos caballeros templarios escapan de la traición de Felipe IV con una misión secreta. Siete años después, sus sobrinos Miguel y Lidón seguirán su rastro por Soria y el Maestrazgo, perseguidos por los espías del rey.
 citas:

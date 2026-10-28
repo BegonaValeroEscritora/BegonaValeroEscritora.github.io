@@ -1,6 +1,7 @@
 ---
 titulo: Club de lectura de la Universitat Jaume I de Castelló (UJI)
 fecha: 2026-10-26
+enlace: https://www.begonavalero.com/noticias/2026-10-26-club-lectura-uji-templarios/
 libros:
   - la-venganza-de-los-templarios
 ---

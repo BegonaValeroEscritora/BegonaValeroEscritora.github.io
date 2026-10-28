@@ -1,5 +1,6 @@
 ---
 import type { GetStaticPaths } from 'astro';
+import { Image } from 'astro:assets';
 import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import Portada from '../../components/Portada.astro';
@@ -56,15 +57,28 @@ const jsonld = {
           </blockquote>
         ))}
         {d.compra.length > 0 ? (
-          <div class="actions">
-            {d.compra.map((c, i) => <a class:list={['btn', i === 0 ? 'primary' : 'ghost']} href={c.url}>{i === 0 ? `Comprar en ${c.texto}` : c.texto}</a>)}
+          <div class="compra" id="comprar">
+            <div class="eyebrow">Dónde comprarlo</div>
+            <div class="actions">
+              {d.compra.map((c, i) => <a class:list={['btn', i === 0 ? 'primary' : 'ghost']} href={c.url}>{i === 0 ? `Comprar en ${c.texto}` : c.texto}</a>)}
+            </div>
           </div>
         ) : !d.otraObra && (
-          <div class="actions"><span class="btn disabled" aria-disabled="true">{d.agotado ? 'Agotado' : 'No disponible en librerías'}</span></div>
+          <div class="compra"><div class="actions"><span class="btn disabled" aria-disabled="true">{d.agotado ? 'Agotado' : 'No disponible en librerías'}</span></div></div>
         )}
         {Object.keys(d.ficha).length > 0 && (
           <dl class="ficha">{Object.entries(d.ficha).map(([k, v]) => <><dt>{k}</dt><dd>{v}</dd></>)}</dl>
         )}
+        {d.ediciones.map((e) => (
+          <section class="edicion">
+            <Image src={e.portada} alt={`Cubierta de ${e.titulo}`} width={240} />
+            <div>
+              <h2>{e.nombre}</h2>
+              <p><i>{e.titulo}</i>{e.editorial && <> · Editorial {e.editorial}</>}</p>
+              {e.noticia && <a class="more" href={`/noticias/${e.noticia.id}/`}>Leer la noticia →</a>}
+            </div>
+          </section>
+        ))}
         <Compartir titulo={d.titulo} />
       </div>
     </article>

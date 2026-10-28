@@ -376,3 +376,10 @@ footer.site-footer a:hover { color: #fff; }
 .share-home { display: flex; justify-content: center; border-top: 1px solid var(--rule); }
 .share-home .share { justify-content: center; margin: 28px 0; }
 body:has(.share-section) footer.site-footer { margin-top: 0; }
+
+.compra { margin: 32px 0 0; }
+.compra .eyebrow { margin-bottom: 12px; }
+.edicion { display: grid; grid-template-columns: 120px 1fr; gap: 24px; align-items: center; margin: 28px 0; padding: 20px; border: 1px solid var(--rule); border-radius: 12px; background: var(--card); }
+.edicion img { width: 120px; height: auto; border-radius: 4px; box-shadow: 0 6px 18px rgb(0 0 0 / .15); }
+.edicion h2 { font-size: 24px; margin: 0 0 6px; }
+.edicion p { margin: 0 0 10px; }

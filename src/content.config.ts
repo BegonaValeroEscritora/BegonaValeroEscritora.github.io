@@ -23,6 +23,9 @@ const libros = defineCollection({
       citas: z.array(z.object({ texto: z.string(), autor: z.string().optional(), cargo: z.string().optional() })).default([]),
       ficha: z.record(z.string(), z.coerce.string()).default({}),
       compra: z.array(z.object({ texto: z.string(), url: z.url() })).default([]),
+      ediciones: z
+        .array(z.object({ nombre: z.string(), titulo: z.string(), editorial: z.string().optional(), portada: image(), noticia: reference('noticias').optional() }))
+        .default([]),
     }),
 });
 

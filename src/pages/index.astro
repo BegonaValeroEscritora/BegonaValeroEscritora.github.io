@@ -46,7 +46,7 @@ const jsonld = {
         <p class="lead">{destacado.data.resumen}</p>
         <div class="actions">
           <a class="btn primary" href={`/libros/${destacado.id}/`}>Descubre la novela</a>
-          {destacado.data.compra[0] && <a class="btn ghost" href={destacado.data.compra[0].url}>Dónde comprarla</a>}
+          {destacado.data.compra.length > 0 && <a class="btn ghost" href={`/libros/${destacado.id}/#comprar`}>Dónde comprarla</a>}
         </div>
       </div>
     </div>
@@ -91,7 +91,7 @@ const jsonld = {
       <aside class="author-card">
         <Image src={retrato} alt="Begoña Valero" width={224} height={224} />
         <div class="eyebrow">La autora</div>
-        <p>Natural de Banyeres de Mariola y médica de formación, recrea la historia con rigor a través de sus novelas sobre Gutenberg, Plantin, Cervantes y los templarios.</p>
+        <p>Natural de Banyeres de Mariola (Alicante) y licenciada en Medicina y Cirugía por la Universidad de Valencia, Begoña Valero cultiva la novela histórica con rigor documental, acercando al lector figuras como Gutenberg, Christophe Plantin y Miguel de Cervantes, así como la historia de los templarios.</p>
         <a class="more" href="/autora/">Conoce a Begoña →</a>
       </aside>
     </div>

@@ -14,6 +14,10 @@ ficha:
   Páginas: "408"
   Publicación: 8 de junio de 2017
 compra:
+  - texto: Amazon
+    url: https://www.amazon.es/dp/8425354862
+  - texto: Casa del Libro
+    url: https://www.casadellibro.com/libro-la-casa-del-compas-de-oro/9788425354861/5319108
   - texto: Penguin Libros (ebook)
     url: https://www.penguinlibros.com/es/novela-historica/20419-ebook-la-casa-del-compas-de-oro-9788425354991
   - texto: Google Libros

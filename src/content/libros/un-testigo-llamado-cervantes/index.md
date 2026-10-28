@@ -4,6 +4,7 @@ genero: Novela histórica
 editorial: Sargantana
 año: 2024
 orden: 4
+destacado: true
 portada: ./portada.jpg
 resumen: Valencia, 1580. Un joven pescador desaparece y sus amigos acaban acusados de asesinato. El testimonio de un soldado recién liberado de su cautiverio en Argel, Miguel de Cervantes, lo cambiará todo.
 citas:
@@ -17,8 +18,18 @@ ficha:
   Publicación: 25 de enero de 2024
   Cubierta: Cervantes en Lepanto, de Augusto Ferrer-Dalmau Nieto
 compra:
+  - texto: Amazon
+    url: https://www.amazon.es/dp/8412751671
+  - texto: Casa del Libro
+    url: https://www.casadellibro.com/libro-un-testigo-llamado-cervantes/9788412751673/15809740
   - texto: todostuslibros.com
     url: https://www.todostuslibros.com/libros/un-testigo-llamado-cervantes_978-84-127516-7-3
+ediciones:
+  - nombre: Edición polaca
+    titulo: Świadek zwany Cervantesem
+    editorial: Finna
+    portada: ./portada-polaca.jpg
+    noticia: 2026-10-27-edicion-polaca-cervantes
 ---
 
 Basada en hechos reales, *Un testigo llamado Cervantes* narra una insólita historia donde el egoísmo, la envidia y los celos se conjugan ante una justicia que no atiende a razones. Solo la verdadera amistad y el ingenio se aliarán para buscar una justa sentencia.
