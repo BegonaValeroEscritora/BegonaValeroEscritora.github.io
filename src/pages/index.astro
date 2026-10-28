@@ -21,6 +21,7 @@ const premios = await Promise.all(
     return { ...p.data, noticia, libro: (await getEntry(p.data.libro))! };
   }),
 ).then((ps) => ps.sort((a, b) => b.noticia.data.fecha.valueOf() - a.noticia.data.fecha.valueOf()));
+const amazon = destacado.data.compra.find((c) => c.texto === 'Amazon') ?? destacado.data.compra[0];
 const premiosDestacado = premios.filter((p) => p.libro.id === destacado.id);
 
 const jsonld = {
@@ -46,7 +47,7 @@ const jsonld = {
         <p class="lead">{destacado.data.resumen}</p>
         <div class="actions">
           <a class="btn primary" href={`/libros/${destacado.id}/`}>Descubre la novela</a>
-          {destacado.data.compra.length > 0 && <a class="btn ghost" href={`/libros/${destacado.id}/#comprar`}>Dónde comprarla</a>}
+          {amazon && <a class="btn ghost" href={amazon.url}>Comprar en {amazon.texto}</a>}
         </div>
       </div>
     </div>

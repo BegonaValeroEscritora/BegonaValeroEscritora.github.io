@@ -8,6 +8,7 @@ import Compartir from '../../components/Compartir.astro';
 import Eventos from '../../components/Eventos.astro';
 import TarjetaNoticia from '../../components/TarjetaNoticia.astro';
 import Vecinos from '../../components/Vecinos.astro';
+import Galeria from '../../components/Galeria.astro';
 import { agenda, libros, noticias, type Libro } from '../../lib/contenido';
 
 export const getStaticPaths = (async () => {
@@ -22,6 +23,12 @@ export const getStaticPaths = (async () => {
 const { libro, posterior, previo } = Astro.props as { libro: Libro; posterior?: Libro; previo?: Libro };
 const vecino = (l?: Libro, etiqueta = '') => l && { href: `/libros/${l.id}/`, titulo: l.data.titulo, etiqueta, img: l.data.portada };
 const d = libro.data;
+const fotos = Object.entries(
+  import.meta.glob<{ default: ImageMetadata }>('/src/content/libros/*/fotos/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG}', { eager: true }),
+)
+  .filter(([ruta]) => ruta.split('/')[4] === libro.id)
+  .sort(([a], [b]) => a.localeCompare(b))
+  .map(([, m]) => m.default);
 const { Content } = await render(libro);
 const sobreEste = (await noticias()).filter((n) => n.data.libros.some((r) => r.id === libro.id));
 const premios = (await getCollection('premios')).filter((p) => p.data.libro.id === libro.id);
@@ -82,6 +89,13 @@ const jsonld = {
         <Compartir titulo={d.titulo} />
       </div>
     </article>
+
+    {fotos.length > 0 && (
+      <section class="block tight libro-fotos">
+        <div class="section-head"><h2>El libro por dentro</h2></div>
+        <Galeria fotos={fotos} titulo={d.titulo} />
+      </section>
+    )}
 
     {eventos.length > 0 && (
       <section class="block tight">

@@ -383,3 +383,9 @@ body:has(.share-section) footer.site-footer { margin-top: 0; }
 .edicion img { width: 120px; height: auto; border-radius: 4px; box-shadow: 0 6px 18px rgb(0 0 0 / .15); }
 .edicion h2 { font-size: 24px; margin: 0 0 6px; }
 .edicion p { margin: 0 0 10px; }
+
+.laurels .laurel { transition: transform .35s ease, color .35s ease; }
+.laurels strong { transition: color .25s ease; }
+.laurels a:hover .laurel, .laurels a:focus-visible .laurel { transform: translateY(-3px) scale(1.06); color: var(--accent); }
+@media (prefers-reduced-motion: reduce) { .laurels a:hover .laurel, .laurels a:focus-visible .laurel { transform: none; } }
+.libro-fotos .gallery img { object-fit: contain; background: var(--paper); }
