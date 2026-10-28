@@ -389,3 +389,23 @@ body:has(.share-section) footer.site-footer { margin-top: 0; }
 .laurels a:hover .laurel, .laurels a:focus-visible .laurel { transform: translateY(-3px) scale(1.06); color: var(--accent); }
 @media (prefers-reduced-motion: reduce) { .laurels a:hover .laurel, .laurels a:focus-visible .laurel { transform: none; } }
 .libro-fotos .gallery img { object-fit: contain; background: var(--paper); }
+
+.hero-covers { position: relative; max-width: min(360px, 76%); margin-left: auto; }
+.hero-covers .hero-main { position: relative; z-index: 1; display: block; }
+.hero-covers .cover { margin: 0; }
+.hero-otra { position: absolute; inset: 3.5% 4%; z-index: 0; text-decoration: none; transform: translateX(-22px) rotate(-5deg); transform-origin: bottom center; transition: transform .5s cubic-bezier(.2, .7, .2, 1); }
+.hero-otra img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 3px; box-shadow: 0 10px 24px rgb(0 0 0 / .18); filter: brightness(.9); transition: filter .5s; }
+.hero-otra span { position: absolute; left: 2px; top: 100%; margin-top: 4px; font-family: var(--sans); font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); width: 28%; line-height: 1.35; opacity: 0; transition: opacity .3s .15s; }
+.hero-covers:hover .hero-otra, .hero-otra:focus-visible { transform: translateX(-32%) rotate(-6deg); }
+.hero-covers:hover .hero-otra img { filter: none; }
+.hero-covers:hover .hero-otra span, .hero-otra:focus-visible span { opacity: 1; }
+.hero-otra:hover span { color: var(--accent); }
+.eyebrow .traduccion { white-space: nowrap; }
+.eyebrow .traduccion a { color: var(--accent); text-decoration: none; }
+.eyebrow .traduccion a:hover { text-decoration: underline; }
+@media (max-width: 900px) { .eyebrow .traduccion { display: block; margin-top: 6px; } .eyebrow .traduccion .sep { display: none; } }
+@media (max-width: 900px) {
+  .hero-covers { max-width: 220px; margin: 0 auto; }
+  .hero-otra { transform: translateX(-14px) rotate(-4deg); }
+}
+@media (prefers-reduced-motion: reduce) { .hero-otra { transition: none; } }

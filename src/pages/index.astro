@@ -21,6 +21,7 @@ const premios = await Promise.all(
     return { ...p.data, noticia, libro: (await getEntry(p.data.libro))! };
   }),
 ).then((ps) => ps.sort((a, b) => b.noticia.data.fecha.valueOf() - a.noticia.data.fecha.valueOf()));
+const edicion = destacado.data.ediciones[0];
 const amazon = destacado.data.compra.find((c) => c.texto === 'Amazon') ?? destacado.data.compra[0];
 const premiosDestacado = premios.filter((p) => p.libro.id === destacado.id);
 
@@ -37,12 +38,22 @@ const jsonld = {
 <Base jsonld={jsonld}>
   <section class="hero">
     <div class="wrap">
-      <a href={`/libros/${destacado.id}/`}><Portada libro={destacado} ancho={360} sizes="(max-width: 900px) 220px, 360px" eager /></a>
+      <div class="hero-covers">
+        {edicion && (
+          <a class="hero-otra" href={edicion.noticia ? `/noticias/${edicion.noticia.id}/` : `/libros/${destacado.id}/`} aria-label={`${edicion.nombre}: ${edicion.titulo}`}>
+            <Image src={edicion.portada} alt="" widths={[240, 360, 720]} sizes="(max-width: 900px) 220px, 360px" quality={72} />
+            <span>{edicion.nombre}</span>
+          </a>
+        )}
+        <a class="hero-main" href={`/libros/${destacado.id}/`}><Portada libro={destacado} ancho={360} sizes="(max-width: 900px) 220px, 360px" eager /></a>
+      </div>
       <div class="text">
-        <div class="eyebrow">{destacado.data.genero} · {destacado.data.editorial}, {destacado.data.año}</div>
+        <div class="eyebrow">{destacado.data.genero} · {destacado.data.editorial}, {destacado.data.año}{edicion?.noticia && <span class="traduccion"><span class="sep"> · </span><a href={`/noticias/${edicion.noticia.id}/`}>También en polaco</a></span>}</div>
         <h1>{destacado.data.titulo}</h1>
         {premiosDestacado.length > 0 && (
-          <div class="badges">{premiosDestacado.map((p) => <a class="badge" href={`/noticias/${p.noticia.id}/`}>{p.nombre} {p.año}</a>)}</div>
+          <div class="badges">
+            {premiosDestacado.map((p) => <a class="badge" href={`/noticias/${p.noticia.id}/`}>{p.nombre} {p.año}</a>)}
+          </div>
         )}
         <p class="lead">{destacado.data.resumen}</p>
         <div class="actions">
