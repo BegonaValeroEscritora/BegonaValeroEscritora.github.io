@@ -1,0 +1,114 @@
+---
+import { Image, getImage } from 'astro:assets';
+import { getEntry } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Portada from '../components/Portada.astro';
+import Compartir from '../components/Compartir.astro';
+import ruta from '../assets/cervantes/ruta-cervantes-valencia.jpg';
+
+const libro = (await getEntry('libros', 'un-testigo-llamado-cervantes'))!;
+const polaca = libro.data.ediciones[0];
+const fichaLibro = `/libros/${libro.id}/`;
+const rutaGrande = await getImage({ src: ruta, width: ruta.width, quality: 85 });
+const titulo = 'Cervantes en Valencia: la historia real detrás de Un testigo llamado Cervantes';
+---
+<Base titulo="Cervantes en Valencia en 1580" descripcion="La historia real detrás de Un testigo llamado Cervantes, de Begoña Valero: el documento hallado en el Archivo del Reino de Valencia, el proceso de creación de la novela y la ruta de Cervantes por Valencia." imagen={libro.data.portada} tipo="article">
+  <div class="wrap">
+    <article class="article cervantes" data-pagefind-body>
+      <nav class="indice" aria-label="En esta página">
+        <div>
+          <span class="eyebrow">En esta página</span>
+          <ol>
+            <li><a href="#historia-real">Una historia real</a></li>
+            <li><a href="#como-nacio">Cómo nació la novela</a></li>
+            <li><a href="#argel">El Cervantes que pocos conocen</a></li>
+            <li><a href="#ruta">La ruta por Valencia</a></li>
+            <li><a href="#polonia">Edición polaca</a></li>
+          </ol>
+        </div>
+      </nav>
+      <div class="eyebrow">Cervantes: la historia detrás de la novela</div>
+      <h1>Cervantes en Valencia: la historia real detrás de <i>Un testigo llamado Cervantes</i></h1>
+      <p class="sub">Una historia real, una investigación histórica y una novela que recupera al Cervantes más desconocido.</p>
+
+
+      <div class="prose">
+        <h2 id="historia-real">Una historia real que merece ser contada</h2>
+        <p>En 2016, el investigador Jesús Villalmanzo descubrió en el Archivo del Reino de Valencia un documento excepcional: la declaración de Miguel de Cervantes como testigo en una causa criminal, fechada el 8 de noviembre de 1580. El manuscrito conserva la firma autógrafa más antigua conocida del escritor en un documento original.</p>
+        <p>Cervantes tenía treinta y tres años y acababa de recuperar la libertad después de casi cinco años de cautiverio en Argel. Aquel testimonio judicial, hasta entonces desconocido, lo situaba en Valencia en uno de los momentos más enigmáticos de su vida, cuando regresaba a España tras una experiencia que marcaría para siempre su trayectoria.</p>
+        <p>De este hallazgo documental nació <a href={fichaLibro}><i>Un testigo llamado Cervantes</i></a>, la novela histórica de Begoña Valero que reconstruye, a partir de la investigación y la ficción, una historia real protagonizada por el joven soldado y escritor. Una obra que invita a descubrir al Cervantes que existió antes del mito: un hombre que acababa de recuperar la libertad y cuyo paso por Valencia dejó una huella inesperada en los archivos de la historia.</p>
+
+        <h2 id="como-nacio">Cómo nació la novela</h2>
+        <div class="tarjetas">
+          <a class="tarjeta" href="https://www.zendalibros.com/una-historia-real-e-inedita-en-la-literatura-sobre-la-vida-de-cervantes/">
+            <span class="eyebrow">Begoña Valero en Zenda</span>
+            <strong>Cómo se construyó <i>Un testigo llamado Cervantes</i></strong>
+            <span class="texto">Begoña Valero desvela el proceso de investigación y creación de una novela inspirada en un episodio real de la vida del escritor que permaneció durante siglos prácticamente desconocido: los documentos históricos que dieron origen a la obra y cómo un hallazgo documental se convirtió en una historia de ficción.</span>
+            <span class="more">Leer el artículo en Zenda →</span>
+          </a>
+          <a class="tarjeta" href="https://www.zendalibros.com/cervantes-el-estropeado-de-alcala-de-henares-que-se-convirtio-en-saavedra/">
+            <span class="eyebrow">Begoña Valero en Zenda</span>
+            <strong>Cervantes: el estropeado de Alcalá de Henares que se convirtió en Saavedra</strong>
+            <span class="texto">¿Por qué Miguel de Cervantes comenzó a utilizar el apellido Saavedra? ¿Qué relación pudo tener con la herida que sufrió en la batalla de Lepanto? Un recorrido por la vida del soldado que convirtió su herida en una seña de identidad.</span>
+            <span class="more">Leer el artículo en Zenda →</span>
+          </a>
+        </div>
+
+        <h2 id="argel">El Cervantes que pocos conocen</h2>
+        <p>El soldado, el cautivo y el hombre que vivió antes de convertirse en el autor del Quijote.</p>
+        <div class="video">
+          <iframe src="https://www.youtube-nocookie.com/embed/lg1wOJT1-zg" title="El cautiverio de Cervantes en Argel: su historia, la gran desconocida" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>
+        </div>
+
+        <h2 id="ruta">Sigue las huellas de Cervantes por Valencia</h2>
+        <p>Begoña Valero reconstruye el recorrido de Miguel de Cervantes por Valencia durante las cinco semanas que permaneció en la ciudad tras ser liberado de su cautiverio en Argel, en 1580. A partir de la investigación histórica y de los escenarios recreados en su novela <i>Un testigo llamado Cervantes</i>, el Ayuntamiento de Valencia edita un plano que recoge esta ruta y contribuye a recuperar la memoria de la estancia del escritor en la ciudad del Turia.</p>
+      </div>
+      <figure class="ruta">
+        <a href={rutaGrande.src}><Image src={ruta} alt="Plano de la Ruta de Cervantes por Valencia" widths={[760, 1299]} sizes="(max-width: 800px) 100vw, 760px" quality={80} /></a>
+        <figcaption>Ruta de Cervantes per València. Pulsa el plano para verlo a mayor tamaño.</figcaption>
+      </figure>
+
+      <div class="prose">
+        <h2 id="polonia">Una historia que cruza fronteras</h2>
+      </div>
+      {polaca && (
+        <div class="edicion">
+          <Image src={polaca.portada} alt={`Cubierta de ${polaca.titulo}`} width={240} />
+          <div>
+            <p>La historia de Cervantes escrita por Begoña Valero traspasa fronteras y llega a los lectores polacos: <i>Un testigo llamado Cervantes</i> ya está a la venta en Polonia como <i>{polaca.titulo}</i>, publicada por la editorial {polaca.editorial}.</p>
+            <p>Mientras la novela conquista nuevos lectores más allá de nuestras fronteras, su edición española alcanza un nuevo hito: la décima edición, reflejo de la trayectoria de una historia real que merece seguir siendo contada.</p>
+            {polaca.noticia && <a class="more" href={`/noticias/${polaca.noticia.id}/`}>Leer la noticia →</a>}
+          </div>
+        </div>
+      )}
+
+      <section class="cierre">
+        <a class="cierre-portada" href={fichaLibro}><Portada libro={libro} ancho={200} sizes="160px" /></a>
+        <div>
+          <h2>Descubre al Cervantes que todavía tenía toda una vida por delante</h2>
+          <p>En 1580, recién liberado de su cautiverio en Argel, Miguel de Cervantes llegó a Valencia. Una declaración suya ante la justicia iba a vincularlo a un episodio real que hoy recupera la novela de Begoña Valero.</p>
+          <p>Una historia de amistad, intriga, apuestas y justicia, reconstruida a partir de la investigación histórica.</p>
+          <div class="actions">
+            <a class="btn primary" href={fichaLibro}>Descubrir la novela</a>
+            <a class="btn ghost" href={`${fichaLibro}#comprar`}>Dónde comprarla</a>
+          </div>
+        </div>
+      </section>
+
+      <Compartir titulo={titulo} />
+    </article>
+  </div>
+</Base>
+
+<script>
+  // Resalta en el índice el apartado que se está leyendo.
+  const enlaces = new Map([...document.querySelectorAll<HTMLAnchorElement>('.indice a')].map((a) => [a.hash.slice(1), a]));
+  const observador = new IntersectionObserver((entradas) => {
+    for (const e of entradas) {
+      if (!e.isIntersecting) continue;
+      enlaces.forEach((a) => a.removeAttribute('aria-current'));
+      enlaces.get(e.target.id)?.setAttribute('aria-current', 'true');
+    }
+  }, { rootMargin: '0px 0px -70% 0px' });
+  enlaces.forEach((_, id) => { const h = document.getElementById(id); if (h) observador.observe(h); });
+</script>

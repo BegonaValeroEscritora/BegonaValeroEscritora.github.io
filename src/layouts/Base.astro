@@ -13,7 +13,7 @@ interface Props {
   jsonld?: object;
 }
 const { titulo, descripcion = SITE.descripcion, imagen = retrato, tipo = 'website', jsonld } = Astro.props;
-const tituloCompleto = titulo ? `${titulo} · ${SITE.titulo}` : `${SITE.titulo} · Escritora`;
+const tituloCompleto = titulo ? `${titulo} · ${SITE.titulo}` : `${SITE.titulo}, escritora de novela histórica`;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const og = await getImage({ src: imagen, width: Math.min(1200, imagen.width), format: 'jpg' });
 const seccion = '/' + Astro.url.pathname.split('/')[1];

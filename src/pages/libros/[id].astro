@@ -9,6 +9,7 @@ import Eventos from '../../components/Eventos.astro';
 import TarjetaNoticia from '../../components/TarjetaNoticia.astro';
 import Vecinos from '../../components/Vecinos.astro';
 import Galeria from '../../components/Galeria.astro';
+import HistoriaCervantes from '../../components/HistoriaCervantes.astro';
 import { agenda, libros, noticias, type Libro } from '../../lib/contenido';
 
 export const getStaticPaths = (async () => {
@@ -63,6 +64,9 @@ const jsonld = {
             {c.autor && <cite><b>{c.autor}</b>{c.cargo && <> · {c.cargo}</>}</cite>}
           </blockquote>
         ))}
+        {libro.id === 'un-testigo-llamado-cervantes' && (
+          <HistoriaCervantes />
+        )}
         {d.compra.length > 0 ? (
           <div class="compra" id="comprar">
             <div class="eyebrow">Dónde comprarlo</div>

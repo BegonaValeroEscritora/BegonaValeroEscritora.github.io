@@ -1,0 +1,17 @@
+---
+// Enlace destacado a /cervantes/ (portada y ficha de la novela).
+import { Image } from 'astro:assets';
+import ruta from '../assets/cervantes/ruta-cervantes-valencia.jpg';
+
+interface Props { compacta?: boolean; }
+const { compacta = false } = Astro.props;
+---
+<a class:list={['historia-card', { compacta }]} href="/cervantes/">
+  <span class="mapa"><Image src={ruta} alt="" widths={[200, 400]} sizes={compacta ? '120px' : '160px'} quality={70} /></span>
+  <span class="cuerpo">
+    <span class="eyebrow">La historia detrás de la novela</span>
+    <strong>Cervantes en Valencia, 1580</strong>
+    {!compacta && <span class="texto">El documento que lo sitúa como testigo en un proceso criminal, cómo nació la novela, la ruta de Cervantes por Valencia y más.</span>}
+    <span class="more">Descubre la historia real <span aria-hidden="true">→</span></span>
+  </span>
+</a>
