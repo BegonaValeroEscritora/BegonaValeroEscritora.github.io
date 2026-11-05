@@ -429,7 +429,9 @@ body:has(.share-section) footer.site-footer { margin-top: 0; }
 .tarjeta .texto { font-size: 16px; color: var(--ink-2); line-height: 1.5; flex: 1; }
 .ruta { margin: 8px 0 32px; }
 .ruta img { width: 100%; height: auto; border-radius: 8px; border: 1px solid var(--rule); }
-.ruta figcaption { font-family: var(--sans); font-size: 13px; color: var(--muted); margin-top: 8px; }
+.ruta figcaption { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 16px; font-family: var(--sans); font-size: 13px; color: var(--muted); margin-top: 8px; }
+.ruta figcaption a { color: var(--accent); font-weight: 500; text-decoration: none; }
+.ruta figcaption a:hover { text-decoration: underline; }
 .cervantes .edicion img { width: 120px; }
 .cervantes .edicion p { font-size: 17px; }
 .cierre { display: grid; grid-template-columns: 160px 1fr; gap: 32px; align-items: center; margin: 48px 0 32px; padding: 32px; background: var(--paper-2); border-radius: 14px; }
@@ -446,10 +448,10 @@ body:has(.share-section) footer.site-footer { margin-top: 0; }
 .historia-card .more span { display: inline-block; transition: transform .25s; }
 .historia-card:hover .more span { transform: translateX(4px); }
 .historia-card .mapa { order: 2; position: relative; overflow: hidden; background: var(--accent); }
-.historia-card .mapa img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 45%; transform: scale(1.08); filter: sepia(.45) saturate(.9) contrast(1.05); transition: transform .6s ease, filter .6s ease; }
-.historia-card:hover .mapa img { transform: scale(1.2); filter: none; }
-.historia-card .mapa::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, var(--card), transparent 40%); }
-.historia-card.compacta .mapa::after { background: linear-gradient(270deg, var(--card), transparent 45%); }
+.historia-card .mapa img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; transform: scale(1.05); filter: sepia(.3) saturate(.95) contrast(1.05); transition: transform .6s ease, filter .6s ease; }
+.historia-card:hover .mapa img { transform: scale(1.18); filter: none; }
+.historia-card .mapa::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, var(--card), transparent 22%); }
+.historia-card.compacta .mapa::after { background: linear-gradient(270deg, var(--card), transparent 25%); }
 .historia-card.compacta { grid-template-columns: 120px 1fr; margin-top: 24px; border-left-width: 1px; max-width: 520px; }
 @media (max-width: 900px) { .historia-card.compacta { margin-inline: auto; grid-template-columns: 96px 1fr; } }
 .historia-card.compacta .mapa { order: 0; min-height: 96px; }

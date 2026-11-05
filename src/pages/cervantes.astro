@@ -1,5 +1,5 @@
 ---
-import { Image, getImage } from 'astro:assets';
+import { Image } from 'astro:assets';
 import { getEntry } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import Portada from '../components/Portada.astro';
@@ -9,7 +9,6 @@ import ruta from '../assets/cervantes/ruta-cervantes-valencia.jpg';
 const libro = (await getEntry('libros', 'un-testigo-llamado-cervantes'))!;
 const polaca = libro.data.ediciones[0];
 const fichaLibro = `/libros/${libro.id}/`;
-const rutaGrande = await getImage({ src: ruta, width: ruta.width, quality: 85 });
 const titulo = 'Cervantes en Valencia: la historia real detrás de Un testigo llamado Cervantes';
 ---
 <Base titulo="Cervantes en Valencia en 1580" descripcion="La historia real detrás de Un testigo llamado Cervantes, de Begoña Valero: el documento hallado en el Archivo del Reino de Valencia, el proceso de creación de la novela y la ruta de Cervantes por Valencia." imagen={libro.data.portada} tipo="article">
@@ -64,8 +63,11 @@ const titulo = 'Cervantes en Valencia: la historia real detrás de Un testigo ll
         <p>Begoña Valero reconstruye el recorrido de Miguel de Cervantes por Valencia durante las cinco semanas que permaneció en la ciudad tras ser liberado de su cautiverio en Argel, en 1580. A partir de la investigación histórica y de los escenarios recreados en su novela <i>Un testigo llamado Cervantes</i>, el Ayuntamiento de Valencia edita un plano que recoge esta ruta y contribuye a recuperar la memoria de la estancia del escritor en la ciudad del Turia.</p>
       </div>
       <figure class="ruta">
-        <a href={rutaGrande.src}><Image src={ruta} alt="Plano de la Ruta de Cervantes por Valencia" widths={[760, 1299]} sizes="(max-width: 800px) 100vw, 760px" quality={80} /></a>
-        <figcaption>Ruta de Cervantes per València. Pulsa el plano para verlo a mayor tamaño.</figcaption>
+        <a href="/media/ruta-cervantes-valencia.jpg"><Image src={ruta} alt="Plano de la Ruta de Cervantes por Valencia, con las doce paradas y sus descripciones en valenciano y castellano" widths={[760, 1520, 2400]} sizes="(max-width: 800px) 100vw, 760px" quality={80} /></a>
+        <figcaption>
+          <span>Plano de la Ruta de Cervantes por Valencia. Pulsa el plano para verlo a tamaño completo.</span>
+          <a href="/media/ruta-cervantes-valencia.jpg" download="ruta-cervantes-valencia.jpg">Descargar el plano (JPG, 2,5 MB)</a>
+        </figcaption>
       </figure>
 
       <div class="prose">
